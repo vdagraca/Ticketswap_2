@@ -6,7 +6,7 @@ const User = require('../users/model')
 
 const router = new Router()
 
-router.post('/events/:id', (req, res, next) => {
+router.post('/events/:id/tickets', (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
@@ -23,7 +23,7 @@ router.post('/events/:id', (req, res, next) => {
 router.get('/events/:id/tickets', (req, res, next) => {
     Ticket
         .findAll(
-            // { include: [Event] }
+            // { include: [User] }
         )
         .then(tickets => {
             res.json({ tickets: tickets })
@@ -39,7 +39,7 @@ router.get('/events/:id/tickets', (req, res, next) => {
 router.get('/events/:id/tickets/:id', (req, res, next) => {
     Ticket
         .findByPk(req.params.id,
-            //  { include: [User] }
+            { include: [User] }
         )
         .then(ticket => {
             if (!ticket) {

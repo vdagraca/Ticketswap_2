@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const Event = require('./model')
 const Ticket = require('../tickets/model')
+const User = require('../users/model')
 
 // const auth = require('../auth/middleware')
 
@@ -22,7 +23,7 @@ router.post('/events', (req, res, next) => {
 
 router.get('/events', (req, res, next) => {
     Event
-        .findAll()
+        .findAll({ include: [User] })
         .then(events => {
             res.json({ events: events })
         })
