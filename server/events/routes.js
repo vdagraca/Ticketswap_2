@@ -1,5 +1,7 @@
 const { Router } = require('express')
 const Event = require('./model')
+const Ticket = require('../tickets/model')
+
 // const auth = require('../auth/middleware')
 
 const router = new Router()
@@ -34,8 +36,7 @@ router.get('/events', (req, res, next) => {
 
 router.get('/events/:id', (req, res, next) => {
     Event
-        .findByPk(req.params.id
-            // , { include: [Song] }
+        .findByPk(req.params.id, { include: [Ticket] }
         )
         .then(event => {
             if (!event) {

@@ -1,13 +1,11 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
-
-
+// const User = require('../users/model')
 const Ticket = sequelize.define('tickets'
     , {
-        author: {
-            type: Sequelize.STRING,
-            field: 'name',
-            allowNull: false
+        userId: {
+            type: Sequelize.INTEGER,
+            field: 'author'
         },
         description: {
             type: Sequelize.STRING,
@@ -19,21 +17,17 @@ const Ticket = sequelize.define('tickets'
             field: 'picture',
             allowNull: false
         },
-        event: {
-            type: Sequelize.STRING,
-            field: 'startdate',
-            allowNull: false
-        },
         price: {
             type: Sequelize.STRING,
-            field: 'enddate',
+            field: 'price',
             allowNull: false
         }
     },
     {
         timestamps: false,
-        tableName: 'events'
+        tableName: 'tickets'
     }
 )
+// Ticket.belongsTo(User)
 
-module.exports = Event
+module.exports = Ticket

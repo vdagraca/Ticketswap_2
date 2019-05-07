@@ -1,28 +1,32 @@
 const { Router } = require('express')
-const Event = require('./model')
+const Ticket = require('./model')
+const Event = require('../events/model')
+const User = require('../users/model')
 // const auth = require('../auth/middleware')
 
 const router = new Router()
 
-router.post('/events', (req, res, next) => {
-    Event
+router.post('/events/:id', (req, res, next) => {
+    Ticket
         .create(req.body)
-        .then(event => {
-            if (!event) {
+        .then(ticket => {
+            if (!ticket) {
                 return res.status(404).send({
-                    message: `event does not exist`
+                    message: `ticket does not exist`
                 })
             }
-            return res.status(201).send(event)
+            return res.status(201).send(ticket)
         })
         .catch(error => next(error))
 })
 
-router.get('/events', (req, res, next) => {
-    Event
-        .findAll()
-        .then(events => {
-            res.json({ events: events })
+router.get('/events/:id/tickets', (req, res, next) => {
+    Ticket
+        .findAll(
+            // { include: [Event] }
+        )
+        .then(tickets => {
+            res.json({ tickets: tickets })
         })
         .catch(err => {
             res.status(500).json({
@@ -32,21 +36,37 @@ router.get('/events', (req, res, next) => {
         })
 })
 
-router.get('/events/:id', (req, res, next) => {
-    Event
-        .findByPk(req.params.id
-            // , { include: [Song] }
+router.get('/events/:id/tickets/:id', (req, res, next) => {
+    Ticket
+        .findByPk(req.params.id,
+            //  { include: [User] }
         )
-        .then(event => {
-            if (!event) {
+        .then(ticket => {
+            if (!ticket) {
                 return res.status(404).send({
                     message: `Event does not exist`
                 })
             }
-            return res.send(event)
+            return res.send(ticket)
         })
         .catch(error => next(error))
 })
+
+router.put('/events/:id/tickets/:id', (req, res, next) => {
+    Ticket
+        .findByPk(req.params.id)
+        .then(ticket => {
+            if (!ticket) {
+                return res.status(404).send({
+                    message: `Ticket does not exist`
+                })
+            }
+            return ticket.update(req.body)
+                .then(ticket => res.send(ticket))
+        })
+        .catch(error => next(error))
+})
+
 
 
 module.exports = router
