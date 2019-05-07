@@ -1,8 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import store from './store'
+import { Route } from 'react-router-dom'
 import Navbar from './components/navbar/navbar'
 import EventlistContainer from './components/Eventlist/EventlistContainer'
+import EventTicketsContainer from './components/Eventtickets/EventTicketsContainer'
 
 import './App.css';
 
@@ -12,7 +14,8 @@ function App() {
       <Navbar />
       <div className="App">
         <h1>Events</h1>
-        <EventlistContainer />
+        <Route path="/events" exact component={EventlistContainer} />
+        <Route path="/events/:id" component={EventTicketsContainer} />
       </div>
     </Provider>
   );
