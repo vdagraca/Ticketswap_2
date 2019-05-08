@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Eventform extends Component {
+export default class EventForm extends Component {
     render() {
         return (
             <div>
