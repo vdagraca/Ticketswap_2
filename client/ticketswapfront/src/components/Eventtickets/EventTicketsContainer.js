@@ -10,7 +10,8 @@ export class EventTicketsContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.loadTickets(Number(this.props.match.params.id))
+        const eventId = this.props.match.params.eventid
+        this.props.loadTickets(eventId)
     }
 
     goBack = () => {
