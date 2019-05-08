@@ -22,10 +22,17 @@ router.post('/events', (req, res, next) => {
 })
 
 router.get('/events', (req, res, next) => {
-    Event
-        .findAll({ include: [User] })
-        .then(events => {
-            res.json({ events: events })
+    const limit = 9
+    const offset = req.query.offset || 0
+
+    Promise.all([
+        Event.count(),
+        Event.findAll({ limit, offset })
+    ])
+        .then(([total, events]) => {
+            res.send({
+                events, total
+            })
         })
         .catch(err => {
             res.status(500).json({
