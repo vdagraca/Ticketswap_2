@@ -55,20 +55,20 @@ export const createEvent = (data) => (dispatch) => {
 }
 
 
-export const CREATE_TICKET = 'CREATE_TICKET'
+// export const CREATE_TICKET = 'CREATE_TICKET'
 
-const ticketCreatedSuccess = event => ({
-    type: CREATE_TICKET,
-    event
-})
+// const ticketCreatedSuccess = event => ({
+//     type: CREATE_TICKET,
+//     event
+// })
 
-export const createTicket = (id, data) => (dispatch) => {
-    (console.log('creatticket'))
-    request
-        .post(`${baseUrl}/events/${id}`)
-        .send(data)
-        .then(response => {
-            dispatch(ticketCreatedSuccess(response.body))
-        })
-        .catch(console.error)
-}
+// export const createTicket = (id, data) => (dispatch) => {
+//     (console.log('creatticket'))
+//     request
+//         .post(`${baseUrl}/events/${id}`)
+//         .send(data)
+//         .then(response => {
+//             dispatch(ticketCreatedSuccess(response.body))
+//         })
+//         .catch(console.error)
+// }
