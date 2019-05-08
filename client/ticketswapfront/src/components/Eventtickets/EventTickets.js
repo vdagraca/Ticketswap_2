@@ -22,6 +22,7 @@ export default class EventTickets extends Component {
                         {tickets.map(this.renderTicketList)}
                     </ul>
                 }
+                <button onClick={this.props.goBack}>Go back</button>
             </div>
         )
     }
