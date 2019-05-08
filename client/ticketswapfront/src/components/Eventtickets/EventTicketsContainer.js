@@ -13,6 +13,10 @@ export class EventTicketsContainer extends Component {
         this.props.loadTickets(Number(this.props.match.params.id))
     }
 
+    goBack = () => {
+        this.props.history.push('/events')
+    }
+
     render() {
         console.log('ticket in container', this.props.tickets)
         console.log('events in eventticket', this.props.events)
@@ -21,6 +25,7 @@ export class EventTicketsContainer extends Component {
                 {!this.state.editMode &&
                     <EventTickets
                         tickets={this.props.tickets}
+                        goBack={this.goBack}
                     />}
             </div>
         )
