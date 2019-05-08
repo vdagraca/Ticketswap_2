@@ -45,7 +45,7 @@ const updateUsers = (users) => ({
 
 export const login = (email, password) => (dispatch) =>
     request
-        .post(`${baseUrl}/logins`)
+        .post(`${baseUrl}/login`)
         .send({ email, password })
         .then(result => dispatch(userLoginSuccess(result.body)))
         .catch(err => {
@@ -58,6 +58,7 @@ export const login = (email, password) => (dispatch) =>
         })
 
 export const signup = (email, password) => (dispatch) =>
+
     request
         .post(`${baseUrl}/users`)
         .send({ firstName: email, lastName: email, email, password })

@@ -7,8 +7,8 @@ export default class navbar extends Component {
             <div>
                 Ticketswap
                 <Link to={`/login`} className="Loginbutton">Login</Link>
-                <Link to={`/logout`} className="Loginbutton">Logout</Link>
-                <button>Sign up</button>
+                <Link to={`/logout`} className="Logoutbutton">Logout</Link>
+                <Link to={`/signup`} className="Signupbutton">Sign up</Link>
             </div>
 
         )

@@ -28,8 +28,11 @@ export class EventFormContainer extends Component {
             startdate: '',
             enddate: ''
         })
+        // if (this.props.authenticated) {
         this.props.createEvent(this.state)
+        // }
     }
+
 
     render() {
 
@@ -44,5 +47,11 @@ export class EventFormContainer extends Component {
         )
     }
 }
+
+// const mapStateToProps = (state, props) => ({
+//     authenticated: state.currentUser !== null,
+//     userId: state.currentUser && userId(state.currentUser.jwt),
+// })
+
 export default connect(null, { createEvent })(EventFormContainer)
 
