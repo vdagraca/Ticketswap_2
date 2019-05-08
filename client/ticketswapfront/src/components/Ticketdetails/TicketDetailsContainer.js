@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import TicketDetails from './TicketDetails'
-// import ProductForm from './ProductForm'
-import { loadDetails } from '../../actions/tickets'
+import TicketForm from '../Ticketform/TicketForm'
+import { loadDetails, updateTicket } from '../../actions/tickets'
 
 export class TicketDetailsContainer extends Component {
     state = {
@@ -11,6 +11,7 @@ export class TicketDetailsContainer extends Component {
     }
 
     componentDidMount() {
+        console.log('match params', this.props.match.params)
         const id = this.props.match.params.id
         const eventId = this.props.match.params.eventId
         this.props.loadDetails(eventId, id)
@@ -21,62 +22,56 @@ export class TicketDetailsContainer extends Component {
         this.props.history.push('/events')
     }
 
-    // editProduct = () => {
+    editTicket = () => {
 
-    //     const { product } = this.props
-    //     this.setState({
-    //         editMode: true,
-    //         formValues: {
-    //             title: product.title,
-    //             description: product.description,
-    //             picture: product.picture,
-    //             price: product.price,
-    //             email: product.email,
-    //             phonenumber: product.phonenumber
-    //         }
-    //     }
-    //     )
-    // }
+        const { ticket } = this.props
+        this.setState({
+            editMode: true,
+            formValues: {
+                picture: ticket.picture,
+                price: ticket.price,
+                description: ticket.description
+            }
+        }
+        )
+    }
 
-    // onSubmit = (product) => {
-    //     console.log('onsubmit')
-    //     product.preventDefault()
-    //     this.setState({
-    //         editMode: false
-    //     })
-    //     this.props.updateProduct(this.props.product.id, this.state.formValues)
-    // }
+    onSubmit = (ticket) => {
+        console.log('onsubmit')
+        ticket.preventDefault()
+        this.setState({
+            editMode: false
+        })
+        this.props.updateTicket(this.props.ticket.id, this.state.formValues)
+    }
 
-    // onChange = (product) => {
-    //     // update the formValues property with the new data from the input field
-    //     this.setState({
-    //         formValues: {
-    //             ...this.state.formValues,
-    //             [product.target.name]: product.target.value
-    //         }
-    //     })
-    // }
+    onChange = (ticket) => {
+        this.setState({
+            formValues: {
+                ...this.state.formValues,
+                [ticket.target.name]: ticket.target.value
+            }
+        })
+    }
 
     render() {
         console.log('ticket in details', this.props.ticket)
         return (
             <div>
-                {/* {!this.state.editMode && */}
 
                 <TicketDetails
                     ticket={this.props.ticket}
-                    onEdit={this.editProduct}
+                    onEdit={this.editTicket}
                     goBack={this.goBack}
                 />
 
-                {/* }
                 {this.state.editMode &&
-                    <ProductForm
+                    <TicketForm
                         onSubmit={this.onSubmit}
                         onChange={this.onChange}
                         values={this.state.formValues}
                     />
-                } */}
+                }
             </div>
         )
     }
@@ -87,4 +82,4 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { loadDetails })(TicketDetailsContainer)
+export default connect(mapStateToProps, { loadDetails, updateTicket })(TicketDetailsContainer)

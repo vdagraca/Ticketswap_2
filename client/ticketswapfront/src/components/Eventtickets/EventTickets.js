@@ -13,6 +13,8 @@ export default class EventTickets extends Component {
     }
 
     render() {
+        // const eventId = this.props.match.params.eventId
+        // console.log('eventId', eventId)
         const { tickets } = this.props
         console.log('tickets in EventTickets', tickets)
         return (
