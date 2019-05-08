@@ -1,10 +1,10 @@
 import request from 'superagent'
+import { baseUrl } from '../constants'
+
 
 export const CREATE_TICKET = 'CREATE_TICKET'
 export const TICKET_DETAILS = 'TICKET_DETAILS'
 export const EDIT_TICKET = 'EDIT_TICKET'
-
-const baseUrl = 'http://localhost:4000'
 
 const ticketCreatedSuccess = ticket => ({
     type: CREATE_TICKET,

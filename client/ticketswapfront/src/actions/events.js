@@ -1,10 +1,11 @@
 import request from 'superagent'
+import { baseUrl } from '../constants'
+
 
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const TICKETS_FETCHED = 'TICKETS_FETCHED'
 export const CREATE_EVENT = 'CREATE_EVENT'
 
-const baseUrl = 'http://localhost:4000'
 
 const eventsFetched = events => ({
     type: EVENTS_FETCHED,
