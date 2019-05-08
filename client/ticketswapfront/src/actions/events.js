@@ -31,7 +31,7 @@ export const loadTickets = (id) => (dispatch, getState) => {
 
     request(`${baseUrl}/events/${id}`)
         .then(response => {
-            console.log('tickets action', response.body.tickets)
+            console.log('tickets action', response.body)
             dispatch(fetchTickets(response.body.tickets))
         })
         .catch(console.error)
