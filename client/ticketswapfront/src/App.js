@@ -6,6 +6,8 @@ import Navbar from './components/navbar/navbar'
 import EventlistContainer from './components/Eventlist/EventlistContainer'
 import EventTicketsContainer from './components/Eventtickets/EventTicketsContainer'
 import EventFormContainer from './components/Eventform/EventFormContainer'
+import TicketFormContainer from './components/Ticketform/TicketFormContainer'
+
 
 
 import './App.css';
@@ -19,6 +21,7 @@ function App() {
         <Route path="/events" exact component={EventlistContainer} />
         <Route path="/events/:id" component={EventTicketsContainer} />
         <Route path="/events" exact component={EventFormContainer} />
+        <Route path="/events/:id" exact component={TicketFormContainer} />
       </div>
     </Provider>
   );
