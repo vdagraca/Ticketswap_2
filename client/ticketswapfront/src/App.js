@@ -18,7 +18,7 @@ function App() {
       <div className="App">
         <h1>Events</h1>
         <Route path="/events" exact component={EventlistContainer} />
-        <Route path="/events/:id" component={EventTicketsContainer} />
+        <Route path="/events/:id" exact component={EventTicketsContainer} />
         <Route path="/events" exact component={EventFormContainer} />
         <Route path="/events/:id" exact component={TicketFormContainer} />
         <Route path="/events/:id/tickets/:id" exact component={TicketDetailsContainer} />

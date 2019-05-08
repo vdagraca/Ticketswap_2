@@ -18,7 +18,7 @@ export class TicketDetailsContainer extends Component {
     }
 
     goBack = () => {
-        this.props.history.push('/events/:id')
+        this.props.history.push('/events')
     }
 
     // editProduct = () => {
