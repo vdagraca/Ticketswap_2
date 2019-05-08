@@ -6,7 +6,7 @@ const User = require('../users/model')
 
 const router = new Router()
 
-router.post('/events/:id/tickets', (req, res, next) => {
+router.post('/events/:id', (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
