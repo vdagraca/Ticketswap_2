@@ -21,8 +21,13 @@ export default class EventForm extends Component {
                         <input type='text' name='enddate' value={this.props.values['enddate']} onChange={this.props.onChange} />
                     </label>
                     <button onClick={this.props.onSubmit} type='submit' value="Submit">Create Event</button>
+
                 </form>
             </div>
         )
     }
+
 }
+
+
+

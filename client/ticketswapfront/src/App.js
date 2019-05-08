@@ -8,8 +8,6 @@ import EventTicketsContainer from './components/Eventtickets/EventTicketsContain
 import EventFormContainer from './components/Eventform/EventFormContainer'
 import TicketFormContainer from './components/Ticketform/TicketFormContainer'
 
-
-
 import './App.css';
 
 function App() {

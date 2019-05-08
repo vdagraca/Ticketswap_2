@@ -1,3 +1,4 @@
+
 import { EVENTS_FETCHED, CREATE_EVENT } from '../actions/events'
 
 export default (state = [], action) => {
@@ -5,6 +6,7 @@ export default (state = [], action) => {
 
         case EVENTS_FETCHED:
             return action.events
+
         case CREATE_EVENT:
             return [...state, action.event]
         default:

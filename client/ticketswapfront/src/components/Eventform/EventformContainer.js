@@ -44,5 +44,5 @@ export class EventFormContainer extends Component {
         )
     }
 }
-
 export default connect(null, { createEvent })(EventFormContainer)
+

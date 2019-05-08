@@ -4,7 +4,6 @@ export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const TICKETS_FETCHED = 'TICKETS_FETCHED'
 export const CREATE_EVENT = 'CREATE_EVENT'
 
-
 const baseUrl = 'http://localhost:4000'
 
 const eventsFetched = events => ({
@@ -33,7 +32,7 @@ export const loadTickets = (id) => (dispatch, getState) => {
 
     request(`${baseUrl}/events/${id}`)
         .then(response => {
-            console.log('tickets action', response.body.tickets)
+            console.log('tickets action', response.body)
             dispatch(fetchTickets(response.body.tickets))
         })
         .catch(console.error)
@@ -55,6 +54,7 @@ export const createEvent = (data) => (dispatch) => {
         .catch(console.error)
 }
 
+
 export const CREATE_TICKET = 'CREATE_TICKET'
 
 const ticketCreatedSuccess = event => ({
@@ -72,6 +72,3 @@ export const createTicket = (id, data) => (dispatch) => {
         })
         .catch(console.error)
 }
-
-
-
