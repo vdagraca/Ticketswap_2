@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import EventForm from './EventForm'
+import TicketForm from './TicketForm'
 import { connect } from 'react-redux';
-import { createEvent } from '../../actions/events'
+import { createTicket } from '../../actions/tickets'
 
-export class EventFormContainer extends Component {
+export class TicketFormContainer extends Component {
     state = {
-        name: '',
-        description: '',
         picture: '',
-        startdate: '',
-        enddate: '',
+        price: '',
+        description: '',
+        eventId: this.props.match.params.id
     }
 
     onChange = (e) => {
@@ -22,13 +21,13 @@ export class EventFormContainer extends Component {
         event.preventDefault()
 
         this.setState({
-            name: '',
-            description: '',
             picture: '',
-            startdate: '',
-            enddate: ''
+            price: '',
+            description: ''
         })
-        this.props.createEvent(this.state)
+        const id = this.props.match.params.id
+        console.log('id', id)
+        this.props.createTicket(id, this.state)
     }
 
     render() {
@@ -36,7 +35,7 @@ export class EventFormContainer extends Component {
         return (
 
             <div>
-                <EventForm
+                <TicketForm
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     values={this.state} />
@@ -44,5 +43,5 @@ export class EventFormContainer extends Component {
         )
     }
 }
-export default connect(null, { createEvent })(EventFormContainer)
 
+export default connect(null, { createTicket })(TicketFormContainer)
