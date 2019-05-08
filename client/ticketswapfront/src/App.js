@@ -8,20 +8,21 @@ import EventTicketsContainer from './components/Eventtickets/EventTicketsContain
 import EventFormContainer from './components/Eventform/EventFormContainer'
 import TicketFormContainer from './components/Ticketform/TicketFormContainer'
 import TicketDetailsContainer from './components/Ticketdetails/TicketDetailsContainer'
-
+import LoginFormContainer from './components/Login/LoginFormContainer';
 import './App.css';
+
 
 function App() {
   return (
     <Provider store={store} >
       <Navbar />
       <div className="App">
-        <h1>Events</h1>
         <Route path="/events" exact component={EventlistContainer} />
         <Route path="/events/:eventid" exact component={EventTicketsContainer} />
         <Route path="/events" exact component={EventFormContainer} />
         <Route path="/events/:eventid" exact component={TicketFormContainer} />
         <Route path="/events/:eventid/tickets/:id" exact component={TicketDetailsContainer} />
+        <Route path="/login" exact component={LoginFormContainer} />
       </div>
     </Provider>
   );
