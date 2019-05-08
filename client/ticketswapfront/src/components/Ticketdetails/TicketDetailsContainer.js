@@ -15,7 +15,6 @@ export class TicketDetailsContainer extends Component {
         const id = this.props.match.params.id
         const eventId = this.props.match.params.eventId
         this.props.loadDetails(eventId, id)
-
     }
 
     goBack = () => {
@@ -36,13 +35,15 @@ export class TicketDetailsContainer extends Component {
         )
     }
 
-    onSubmit = (ticket) => {
-        console.log('onsubmit')
-        ticket.preventDefault()
+    onSubmit = (tickt) => {
+        const { updateTicket, ticket } = this.props
+
+        tickt.preventDefault()
+
         this.setState({
             editMode: false
         })
-        this.props.updateTicket(this.props.ticket.id, this.state.formValues)
+        updateTicket(ticket.eventId, ticket.id, this.state.formValues)
     }
 
     onChange = (ticket) => {
