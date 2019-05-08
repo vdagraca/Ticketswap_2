@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import EventForm from './EventForm'
 import { connect } from 'react-redux';
-// import { createEvent } from '../../actions/events'
+import { createEvent } from '../../actions/events'
 
 export class EventFormContainer extends Component {
     state = {
@@ -18,20 +18,18 @@ export class EventFormContainer extends Component {
         })
     }
 
-    // onSubmit = (event) => {
-    //     event.preventDefault()
+    onSubmit = (event) => {
+        event.preventDefault()
 
-    //     this.setState({
-    //         title: '',
-    //         description: '',
-    //         picture: '',
-    //         price: '',
-    //         email: '',
-    //         phonenumber: ''
-
-    //     })
-    //     this.props.createEvent(this.state)
-    // }
+        this.setState({
+            name: '',
+            description: '',
+            picture: '',
+            startdate: '',
+            enddate: ''
+        })
+        this.props.createEvent(this.state)
+    }
 
     render() {
 
@@ -47,4 +45,4 @@ export class EventFormContainer extends Component {
     }
 }
 
-export default connect(null)(EventFormContainer)
+export default connect(null, { createEvent })(EventFormContainer)

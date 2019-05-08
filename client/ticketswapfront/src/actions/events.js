@@ -2,6 +2,7 @@ import request from 'superagent'
 
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const TICKETS_FETCHED = 'TICKETS_FETCHED'
+export const EVENT_CREATED = 'EVENT_CREATED'
 
 const baseUrl = 'http://localhost:4000'
 
@@ -33,6 +34,22 @@ export const loadTickets = (id) => (dispatch, getState) => {
         .then(response => {
             console.log('tickets action', response.body)
             dispatch(fetchTickets(response.body.tickets))
+        })
+        .catch(console.error)
+}
+
+const eventCreatedSuccess = event => ({
+    type: EVENT_CREATED,
+    event
+})
+
+export const createEvent = (data) => (dispatch) => {
+    (console.log('createevent'))
+    request
+        .post(`${baseUrl}/events`)
+        .send(data)
+        .then(response => {
+            dispatch(eventCreatedSuccess(response.body))
         })
         .catch(console.error)
 }
