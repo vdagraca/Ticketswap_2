@@ -36,7 +36,7 @@ router.get('/events/:id/tickets', (req, res, next) => {
         })
 })
 
-router.get('/events/:id/tickets/:id', (req, res, next) => {
+router.get('/events/:eventid/tickets/:id', (req, res, next) => {
     Ticket
         .findByPk(req.params.id,
             { include: [User] }
@@ -44,7 +44,7 @@ router.get('/events/:id/tickets/:id', (req, res, next) => {
         .then(ticket => {
             if (!ticket) {
                 return res.status(404).send({
-                    message: `Event does not exist`
+                    message: `Ticket does not exist`
                 })
             }
             return res.send(ticket)
@@ -52,7 +52,7 @@ router.get('/events/:id/tickets/:id', (req, res, next) => {
         .catch(error => next(error))
 })
 
-router.put('/events/:id/tickets/:id', (req, res, next) => {
+router.put('/events/:eventid/tickets/:id', (req, res, next) => {
     Ticket
         .findByPk(req.params.id)
         .then(ticket => {
