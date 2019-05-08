@@ -7,6 +7,7 @@ export default class EventTickets extends Component {
             key={ticket.id}>
             {ticket.description}
             {ticket.price}
+            <img className="image" style={{ width: "300px" }} src={ticket.picture} alt={ticket.name} />
         </li>
     }
 
