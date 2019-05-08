@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class EventTickets extends Component {
 
     renderTicketList(ticket) {
         return <li
             key={ticket.id}>
-            {ticket.description}
-            {ticket.price}
-            <img className="image" style={{ width: "300px" }} src={ticket.picture} alt={ticket.name} />
+            <Link to={`/events/1/tickets/${ticket.id}`} className="ListItem">
+                {ticket.description}
+                {ticket.price}</Link>
         </li>
     }
 
