@@ -1,3 +1,3 @@
-export const baseUrl = 'http://localhost:4002'
+export const baseUrl = 'http://localhost:4001'
 
 export const localStorageJwtKey = 'currentUserJwt'
