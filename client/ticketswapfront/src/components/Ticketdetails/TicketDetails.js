@@ -6,7 +6,6 @@ export default class TicketDetails extends Component {
     render() {
         const { ticket } = this.props
         const { fraude } = this.props
-        console.log('fraude', fraude)
         return (
             <div>
                 <h1>Ticket from user {ticket.userId}</h1>

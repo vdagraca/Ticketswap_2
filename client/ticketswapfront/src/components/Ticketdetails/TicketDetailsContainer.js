@@ -60,11 +60,9 @@ export class TicketDetailsContainer extends Component {
     fraudeCalculation = () => {
         const tickets = this.props.tickets
         const ticket = this.props.ticket
-        const comments = ticket.comment
+        const comments = this.props.comments
         let fraudeRisk = this.state.fraude
         const ticketUserIdArray = tickets.map(ticket => { return ticket.userId })
-        console.log('ticketUserIdArray', ticketUserIdArray)
-
 
         const userId = (arr) => {
             let countUserId = 0
@@ -78,12 +76,13 @@ export class TicketDetailsContainer extends Component {
         }
         const userIdMatch = userId(ticketUserIdArray)
 
-        if (userIdMatch === 1) {
+        if (comments.length > 2) {
+            fraudeRisk += 5
+        }
+        else if (userIdMatch === 1) {
             fraudeRisk += 10
         }
-        // if (comments.length > 2) {
-        //     return fraudeRisk + 5
-        // } else { return fraudeRisk + 1 }
+
 
         this.setState({
             fraude: fraudeRisk
@@ -91,10 +90,11 @@ export class TicketDetailsContainer extends Component {
     }
 
     render() {
-        console.log('ticket', this.props.ticket)
-        return (
-            <div>
 
+
+        return (
+
+            <div>
                 <TicketDetails
                     ticket={this.props.ticket}
                     onEdit={this.editTicket}
@@ -116,7 +116,8 @@ export class TicketDetailsContainer extends Component {
 
 const mapStateToProps = (state) => ({
     ticket: state.ticket,
-    tickets: state.tickets
+    tickets: state.tickets,
+    comments: state.comments
 })
 
 
