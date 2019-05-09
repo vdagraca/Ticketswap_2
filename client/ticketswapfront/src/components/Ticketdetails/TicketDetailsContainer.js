@@ -74,10 +74,6 @@ export class TicketDetailsContainer extends Component {
                         values={this.state.formValues}
                     />
                 }
-                <CommentListContainer
-                    eventId={this.props.match.params.eventId}
-                    id={this.props.match.params.id}
-                />
             </div>
         )
     }
