@@ -56,7 +56,7 @@ export class TicketDetailsContainer extends Component {
     }
 
     render() {
-        console.log('currentuser', this.props.user)
+        console.log('tickt', this.props.ticket)
         return (
             <div>
 
