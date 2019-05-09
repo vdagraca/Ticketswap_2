@@ -25,8 +25,9 @@ export class CommentFormContainer extends Component {
             comment: ''
         })
         const eventid = this.props.eventid
+        const id = this.props.id
         console.log('eventid', eventid)
-        this.props.createComment(eventid, this.state)
+        this.props.createComment(eventid, id, this.state)
     }
 
     render() {
