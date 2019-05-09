@@ -3,11 +3,11 @@ const Event = require('./model')
 const Ticket = require('../tickets/model')
 const User = require('../users/model')
 
-// const auth = require('../auth/middleware')
+const auth = require('../auth/middleware')
 
 const router = new Router()
 
-router.post('/events', (req, res, next) => {
+router.post('/events', auth, (req, res, next) => {
     Event
         .create(req.body)
         .then(event => {
