@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import TicketDetails from './TicketDetails'
 import TicketForm from '../Ticketform/TicketForm'
 import { loadDetails, updateTicket } from '../../actions/tickets'
+import CommentListContainer from '../Comments/CommentListContainer';
 
 export class TicketDetailsContainer extends Component {
     state = {
@@ -73,6 +74,10 @@ export class TicketDetailsContainer extends Component {
                         values={this.state.formValues}
                     />
                 }
+                <CommentListContainer
+                    eventId={this.props.match.params.eventId}
+                    id={this.props.match.params.id}
+                />
             </div>
         )
     }
