@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../db')
 const User = require('../users/model')
+const Comment = require('../comments/model')
 const Ticket = sequelize.define('tickets'
     , {
         userId: {
@@ -28,6 +29,7 @@ const Ticket = sequelize.define('tickets'
         tableName: 'tickets'
     }
 )
+Ticket.hasMany(Comment)
 Ticket.belongsTo(User)
 
 module.exports = Ticket
