@@ -1,8 +1,5 @@
 import request from 'superagent'
 import { baseUrl } from '../constants'
-import { logout } from './users'
-import { isExpired } from '../jwt'
-
 
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const TICKETS_FETCHED = 'TICKETS_FETCHED'

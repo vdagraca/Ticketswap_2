@@ -7,7 +7,8 @@ import { loadDetails, updateTicket } from '../../actions/tickets'
 export class TicketDetailsContainer extends Component {
     state = {
         editMode: false,
-        formValues: {}
+        formValues: {},
+        fraude: 5
     }
 
     componentDidMount() {
@@ -15,6 +16,7 @@ export class TicketDetailsContainer extends Component {
         const id = this.props.match.params.id
         const eventId = this.props.match.params.eventId
         this.props.loadDetails(eventId, id)
+        this.fraudeCalculation()
     }
 
     goBack = () => {
@@ -55,8 +57,41 @@ export class TicketDetailsContainer extends Component {
         })
     }
 
+    fraudeCalculation = () => {
+        const tickets = this.props.tickets
+        const ticket = this.props.ticket
+        const comments = ticket.comment
+        let fraudeRisk = this.state.fraude
+        const ticketUserIdArray = tickets.map(ticket => { return ticket.userId })
+        console.log('ticketUserIdArray', ticketUserIdArray)
+
+
+        const userId = (arr) => {
+            let countUserId = 0
+
+            for (let i = 0; i < arr.length; i++) {
+                if (ticket.userId === arr[i]) {
+                    countUserId++
+                }
+            }
+            return countUserId
+        }
+        const userIdMatch = userId(ticketUserIdArray)
+
+        if (userIdMatch === 1) {
+            fraudeRisk += 10
+        }
+        // if (comments.length > 2) {
+        //     return fraudeRisk + 5
+        // } else { return fraudeRisk + 1 }
+
+        this.setState({
+            fraude: fraudeRisk
+        })
+    }
+
     render() {
-        console.log('tickt', this.props.ticket)
+        console.log('ticket', this.props.ticket)
         return (
             <div>
 
@@ -64,6 +99,7 @@ export class TicketDetailsContainer extends Component {
                     ticket={this.props.ticket}
                     onEdit={this.editTicket}
                     goBack={this.goBack}
+                    fraude={this.state.fraude}
                 />
 
                 {this.state.editMode &&
@@ -80,6 +116,7 @@ export class TicketDetailsContainer extends Component {
 
 const mapStateToProps = (state) => ({
     ticket: state.ticket,
+    tickets: state.tickets
 })
 
 

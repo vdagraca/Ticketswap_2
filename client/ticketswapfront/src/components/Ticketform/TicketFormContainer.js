@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createTicket } from '../../actions/tickets'
 
 export class TicketFormContainer extends Component {
+
     state = {
         picture: '',
         price: '',
@@ -20,15 +21,17 @@ export class TicketFormContainer extends Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-
-        this.setState({
-            picture: '',
-            price: '',
-            description: ''
-        })
-        const eventid = this.props.match.params.eventid
-        console.log('eventid', eventid)
-        this.props.createTicket(eventid, this.state)
+        if (this.props.user) {
+            this.setState({
+                picture: '',
+                price: '',
+                description: '',
+                userId: this.props.user.userId
+            })
+            const eventid = this.props.match.params.eventid
+            console.log('eventid', eventid)
+            this.props.createTicket(eventid, this.state)
+        } else { return null }
     }
 
     render() {
