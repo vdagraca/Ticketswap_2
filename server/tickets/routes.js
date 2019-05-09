@@ -21,21 +21,6 @@ router.post('/events/:id', auth, (req, res, next) => {
         .catch(error => next(error))
 })
 
-// router.get('/events/:id/tickets', (req, res, next) => {
-//     Ticket
-//         .findAll(
-//             { include: [User] }
-//         )
-//         .then(tickets => {
-//             res.json({ tickets: tickets })
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 message: 'Something went wrong',
-//                 error: err
-//             })
-//         })
-// })
 
 router.get('/events/:eventid/tickets/:id', (req, res, next) => {
     Ticket
