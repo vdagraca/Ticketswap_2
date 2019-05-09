@@ -24,10 +24,12 @@ const ticketCommentSuccess = comment => ({
     comment
 })
 
-export const createComment = (eventId, id, data) => (dispatch) => {
+export const createComment = (eventId, id, data) => (dispatch, getState) => {
+    const state = getState()
 
     request
         .post(`${baseUrl}/events/${eventId}/tickets/${id}`)
+        .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => {
             dispatch(ticketCommentSuccess(response.body))

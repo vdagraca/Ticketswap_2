@@ -8,7 +8,8 @@ export class TicketFormContainer extends Component {
         picture: '',
         price: '',
         description: '',
-        eventId: this.props.match.params.eventid
+        eventId: this.props.match.params.eventid,
+        userId: this.props.user.userId
     }
 
     onChange = (e) => {
@@ -31,7 +32,7 @@ export class TicketFormContainer extends Component {
     }
 
     render() {
-
+        console.log('userid', this.props.user.userId)
         return (
 
             <div>
@@ -44,4 +45,8 @@ export class TicketFormContainer extends Component {
     }
 }
 
-export default connect(null, { createTicket })(TicketFormContainer)
+const mapStateToProps = (state) => ({
+    user: state.currentUser
+})
+
+export default connect(mapStateToProps, { createTicket })(TicketFormContainer)

@@ -13,6 +13,7 @@ catch (e) {
 }
 
 export default function (state = initialState, { type, payload }) {
+  console.log('payload', payload)
   switch (type) {
     case USER_LOGIN_SUCCESS:
       return payload
