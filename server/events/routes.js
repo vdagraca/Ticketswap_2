@@ -44,7 +44,7 @@ router.get('/events', (req, res, next) => {
 
 router.get('/events/:id', (req, res, next) => {
     Event
-        .findByPk(req.params.id, { include: [Ticket] }
+        .findByPk(req.params.id, { include: [Ticket, User] }
         )
         .then(event => {
             if (!event) {
