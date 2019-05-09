@@ -1,5 +1,7 @@
 import request from 'superagent'
 import { baseUrl } from '../constants'
+import { logout } from './users'
+import { isExpired } from '../jwt'
 
 
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
@@ -44,10 +46,14 @@ const eventCreatedSuccess = event => ({
     event
 })
 
-export const createEvent = (data) => (dispatch) => {
-    (console.log('createevent'))
+export const createEvent = (data) => (dispatch, getState) => {
+    const state = getState()
+    // const jwt = state.currentUser.jwt
+
+    // (console.log('token?', jwt))
     request
         .post(`${baseUrl}/events`)
+        .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => {
             dispatch(eventCreatedSuccess(response.body))
@@ -55,21 +61,3 @@ export const createEvent = (data) => (dispatch) => {
         .catch(console.error)
 }
 
-
-// export const CREATE_TICKET = 'CREATE_TICKET'
-
-// const ticketCreatedSuccess = event => ({
-//     type: CREATE_TICKET,
-//     event
-// })
-
-// export const createTicket = (id, data) => (dispatch) => {
-//     (console.log('creatticket'))
-//     request
-//         .post(`${baseUrl}/events/${id}`)
-//         .send(data)
-//         .then(response => {
-//             dispatch(ticketCreatedSuccess(response.body))
-//         })
-//         .catch(console.error)
-// }
