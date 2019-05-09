@@ -24,9 +24,6 @@ export class CommentlistContainer extends Component {
                 <CommentList
                     comments={this.props.comments}
                 />
-                <CommentFormContainer
-                    eventId={this.eventId}
-                    id={this.id} />
             </div>
         )
     }

@@ -9,6 +9,7 @@ import EventFormContainer from './components/Eventform/EventFormContainer'
 import TicketFormContainer from './components/Ticketform/TicketFormContainer'
 import TicketDetailsContainer from './components/Ticketdetails/TicketDetailsContainer'
 import CommentListContainer from './components/Comments/CommentListContainer';
+import CommentFormContainer from './components/CommentForm/CommentFormContainer';
 import LoginFormContainer from './components/Login/LoginFormContainer';
 import LogoutPage from './components/Logout/LogoutPage'
 import SignupPage from './components/signup/SignupPage'
@@ -26,6 +27,7 @@ function App() {
         <Route path="/events/:eventid" exact component={TicketFormContainer} />
         <Route path="/events/:eventid/tickets/:id" exact component={TicketDetailsContainer} />
         <Route path="/events/:eventid/tickets/:id" exact component={CommentListContainer} />
+        <Route path="/events/:eventid/tickets/:id" exact component={CommentFormContainer} />
         <Route path="/login" exact component={LoginFormContainer} />
         <Route path="/logout" exact component={LogoutPage} />
         <Route path="/signup" exact component={SignupPage} />
