@@ -11,10 +11,11 @@ const ticketCreatedSuccess = ticket => ({
     ticket
 })
 
-export const createTicket = (id, data) => (dispatch) => {
-    (console.log('creatticket'))
+export const createTicket = (id, data) => (dispatch, getState) => {
+    const state = getState()
     request
         .post(`${baseUrl}/events/${id}`)
+        .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => {
             dispatch(ticketCreatedSuccess(response.body))

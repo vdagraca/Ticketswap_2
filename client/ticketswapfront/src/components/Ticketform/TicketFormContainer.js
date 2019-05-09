@@ -8,7 +8,7 @@ export class TicketFormContainer extends Component {
         picture: '',
         price: '',
         description: '',
-        eventId: this.props.match.params.id
+        eventId: this.props.match.params.eventid
     }
 
     onChange = (e) => {
@@ -25,9 +25,9 @@ export class TicketFormContainer extends Component {
             price: '',
             description: ''
         })
-        const id = this.props.match.params.id
-        console.log('id', id)
-        this.props.createTicket(id, this.state)
+        const eventid = this.props.match.params.eventid
+        console.log('eventid', eventid)
+        this.props.createTicket(eventid, this.state)
     }
 
     render() {
