@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CommentList from './CommentList';
 import { connect } from 'react-redux'
 import { loadComments } from '../../actions/comments'
+import { CommentFormContainer } from '../CommentForm/CommentFormContainer'
 
 
 export class CommentlistContainer extends Component {
@@ -22,6 +23,9 @@ export class CommentlistContainer extends Component {
                 <CommentList
                     comments={this.props.comments}
                 />
+                <CommentFormContainer
+                    eventId={this.eventId}
+                    id={this.id} />
             </div>
         )
     }
