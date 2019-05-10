@@ -4,7 +4,7 @@ import EventTickets from './EventTickets'
 import { loadTickets } from '../../actions/events'
 
 export class EventTicketsContainer extends Component {
-    
+
     state = {
         editMode: false,
         formValues: {}
@@ -18,7 +18,6 @@ export class EventTicketsContainer extends Component {
 
     render() {
         console.log('ticket in container', this.props.tickets)
-        console.log('events in eventticket', this.props.events)
         return (
             <div>
                 {!this.state.editMode &&
@@ -33,7 +32,6 @@ export class EventTicketsContainer extends Component {
 
 const mapStateToProps = (state) => ({
     tickets: state.tickets,
-    events: state.events
 })
 
 

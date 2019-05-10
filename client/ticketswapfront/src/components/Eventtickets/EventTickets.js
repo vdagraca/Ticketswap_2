@@ -13,9 +13,7 @@ export default class EventTickets extends Component {
     }
 
     render() {
-
         const { tickets } = this.props
-        console.log('tickets in EventTickets', tickets)
         return (
             <div className="ticket-list">
                 <h1>Eventtickets</h1>

@@ -59,14 +59,21 @@ export class TicketDetailsContainer extends Component {
     }
 
     fraudeCalculation = () => {
-        
-        
+
+
         const tickets = this.props.tickets
         const ticket = this.props.ticket
         const comments = this.props.comments
+        const timeCreated = ticket.createdAt
+        console.log('type', typeof timeCreated)
+        console.log('timeCreated', timeCreated)
         let fraudeRisk = this.state.fraude
+
         const ticketPriceArray = tickets.map(ticket => { return ticket.price })
         const ticketUserIdArray = tickets.map(ticket => { return ticket.userId })
+
+        // const time = timeCreated.split(' ')
+        // console.log('time', time)
 
         Math.min(5, fraudeRisk)
         Math.max(95, fraudeRisk)
@@ -88,7 +95,6 @@ export class TicketDetailsContainer extends Component {
         const average = sum / ticketPriceArray.length
         const percentageCheaper = ticket.price / average
         const percentageExpensive = ticket.price / average - 1
-        console.log('percentageExpensive', percentageExpensive)
 
         if (comments.length > 2) {
             fraudeRisk += 5
