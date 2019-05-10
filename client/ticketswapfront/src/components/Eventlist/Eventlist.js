@@ -22,6 +22,7 @@ export default class Eventlist extends Component {
         console.log('events', events)
         return (
             <div className="event-list">
+                <h1>Events</h1>
                 {events === null && 'Loading...'}
                 {events !== null &&
                     <ul className={'List'}>

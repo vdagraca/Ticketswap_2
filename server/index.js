@@ -4,11 +4,12 @@ const eventsRouter = require('./events/routes')
 const ticketsRouter = require('./tickets/routes')
 const commentsRouter = require('./comments/routes')
 const userRouter = require('./users/routes')
+const authenticationRouter = require('./auth/routes')
 const cors = require("cors");
 
 const app = express()
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 4001
 
 
 app
@@ -18,4 +19,5 @@ app
     .use(ticketsRouter)
     .use(commentsRouter)
     .use(userRouter)
+    .use(authenticationRouter)
     .listen(port, () => console.log(`Listening on port ${port}`))

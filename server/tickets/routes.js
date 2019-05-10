@@ -2,14 +2,17 @@ const { Router } = require('express')
 const Ticket = require('./model')
 const Event = require('../events/model')
 const User = require('../users/model')
-// const auth = require('../auth/middleware')
+const Comment = require('../comments/model')
+const auth = require('../auth/middleware')
+// const ticketFraude = require('./logic')
 
 const router = new Router()
 
-router.post('/events/:id/tickets', (req, res, next) => {
+router.post('/events/:id', auth, (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
+            console.log('userId', ticket.userId)
             if (!ticket) {
                 return res.status(404).send({
                     message: `ticket does not exist`
@@ -20,31 +23,17 @@ router.post('/events/:id/tickets', (req, res, next) => {
         .catch(error => next(error))
 })
 
-router.get('/events/:id/tickets', (req, res, next) => {
-    Ticket
-        .findAll(
-            // { include: [User] }
-        )
-        .then(tickets => {
-            res.json({ tickets: tickets })
-        })
-        .catch(err => {
-            res.status(500).json({
-                message: 'Something went wrong',
-                error: err
-            })
-        })
-})
 
-router.get('/events/:id/tickets/:id', (req, res, next) => {
+router.get('/events/:eventid/tickets/:id', (req, res, next) => {
     Ticket
         .findByPk(req.params.id,
-            { include: [User] }
+            { include: [User, Comment] }
         )
         .then(ticket => {
+            // ticketFraude(ticket)
             if (!ticket) {
                 return res.status(404).send({
-                    message: `Event does not exist`
+                    message: `Ticket does not exist`
                 })
             }
             return res.send(ticket)
@@ -52,7 +41,7 @@ router.get('/events/:id/tickets/:id', (req, res, next) => {
         .catch(error => next(error))
 })
 
-router.put('/events/:id/tickets/:id', (req, res, next) => {
+router.put('/events/:eventid/tickets/:id', auth, (req, res, next) => {
     Ticket
         .findByPk(req.params.id)
         .then(ticket => {

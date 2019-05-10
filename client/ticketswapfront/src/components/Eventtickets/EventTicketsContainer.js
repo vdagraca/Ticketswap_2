@@ -10,8 +10,10 @@ export class EventTicketsContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.loadTickets(Number(this.props.match.params.id))
+        const eventId = this.props.match.params.eventid
+        this.props.loadTickets(eventId)
     }
+
 
     render() {
         console.log('ticket in container', this.props.tickets)
@@ -21,6 +23,7 @@ export class EventTicketsContainer extends Component {
                 {!this.state.editMode &&
                     <EventTickets
                         tickets={this.props.tickets}
+                        goBack={this.goBack}
                     />}
             </div>
         )

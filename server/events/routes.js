@@ -3,11 +3,11 @@ const Event = require('./model')
 const Ticket = require('../tickets/model')
 const User = require('../users/model')
 
-// const auth = require('../auth/middleware')
+const auth = require('../auth/middleware')
 
 const router = new Router()
 
-router.post('/events', (req, res, next) => {
+router.post('/events', auth, (req, res, next) => {
     Event
         .create(req.body)
         .then(event => {
@@ -22,10 +22,17 @@ router.post('/events', (req, res, next) => {
 })
 
 router.get('/events', (req, res, next) => {
-    Event
-        .findAll({ include: [User] })
-        .then(events => {
-            res.json({ events: events })
+    const limit = 9
+    const offset = req.query.offset || 0
+
+    Promise.all([
+        Event.count(),
+        Event.findAll({ limit, offset })
+    ])
+        .then(([total, events]) => {
+            res.send({
+                events, total
+            })
         })
         .catch(err => {
             res.status(500).json({
@@ -37,7 +44,7 @@ router.get('/events', (req, res, next) => {
 
 router.get('/events/:id', (req, res, next) => {
     Event
-        .findByPk(req.params.id, { include: [Ticket] }
+        .findByPk(req.params.id, { include: [Ticket, User] }
         )
         .then(event => {
             if (!event) {
