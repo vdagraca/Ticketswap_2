@@ -35,23 +35,25 @@ export class EventFormContainer extends Component {
 
 
     render() {
+        if (this.props.user) {
+            return (
 
-        return (
-
-            <div>
-                <EventForm
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    values={this.state} />
-            </div>
-        )
+                <div>
+                    <EventForm
+                        onSubmit={this.onSubmit}
+                        onChange={this.onChange}
+                        values={this.state} />
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 }
 
-// const mapStateToProps = (state, props) => ({
-//     authenticated: state.currentUser !== null,
-//     userId: state.currentUser && userId(state.currentUser.jwt),
-// })
+const mapStateToProps = (state, props) => ({
+    user: state.currentUser !== null
+})
 
-export default connect(null, { createEvent })(EventFormContainer)
+export default connect(mapStateToProps, { createEvent })(EventFormContainer)
 

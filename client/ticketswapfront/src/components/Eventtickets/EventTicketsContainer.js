@@ -4,6 +4,7 @@ import EventTickets from './EventTickets'
 import { loadTickets } from '../../actions/events'
 
 export class EventTicketsContainer extends Component {
+    
     state = {
         editMode: false,
         formValues: {}

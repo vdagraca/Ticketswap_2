@@ -33,20 +33,25 @@ export class CommentFormContainer extends Component {
     }
 
     render() {
-        return (
+        if (this.props.user) {
+            return (
 
-            <div>
-                <CommentForm
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    values={this.state} />
-            </div>
-        )
+                <div>
+                    <CommentForm
+                        onSubmit={this.onSubmit}
+                        onChange={this.onChange}
+                        values={this.state} />
+                </div>
+            )
+        } else {
+            return null
+        }
     }
 }
 
 const mapStateToProps = (state) => ({
     ticket: state.ticket,
+    user: state.currentUser !== null
 })
 
 export default connect(mapStateToProps, { createComment })(CommentFormContainer)

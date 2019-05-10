@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux'
 import store from './store'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Navbar from './components/navbar/navbar'
 import EventlistContainer from './components/Eventlist/EventlistContainer'
 import EventTicketsContainer from './components/Eventtickets/EventTicketsContainer'
@@ -31,6 +31,7 @@ function App() {
         <Route path="/login" exact component={LoginFormContainer} />
         <Route path="/logout" exact component={LogoutPage} />
         <Route path="/signup" exact component={SignupPage} />
+        <Route exact path="/" render={() => <Redirect to="/events" />} />
       </div>
     </Provider>
   );

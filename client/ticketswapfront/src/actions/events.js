@@ -26,7 +26,7 @@ const fetchTickets = tickets => ({
     tickets
 })
 
-export const loadTickets = (id) => (dispatch, getState) => {
+export const loadTickets = (id) => (dispatch, state) => {
 
     // if (getState().events) return
 
