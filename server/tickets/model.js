@@ -8,6 +8,11 @@ const Ticket = sequelize.define('tickets'
             type: Sequelize.INTEGER,
             field: 'user_id'
         },
+        name: {
+            type: Sequelize.STRING,
+            field: 'name',
+            allowNull: false
+        },
         description: {
             type: Sequelize.STRING,
             field: 'description',
@@ -19,10 +24,16 @@ const Ticket = sequelize.define('tickets'
             allowNull: false
         },
         price: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             field: 'price',
             allowNull: false
         }
+        // ,
+        // fraude: {
+        //     type: Sequelize.NUMBER,
+        //     field: 'fraude',
+        //     allowNull: false
+        // }
     },
     {
         timestamps: false,
