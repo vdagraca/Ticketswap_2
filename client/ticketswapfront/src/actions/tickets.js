@@ -43,10 +43,11 @@ const editTicketAction = (ticket) => ({
     ticket
 })
 
-export const updateTicket = (eventId, id, data) => dispatch => {
-    console.log('updateTicket')
+export const updateTicket = (eventId, id, data) => (dispatch, getState) => {
+    const state = getState()
     request
         .put(`${baseUrl}/events/${eventId}/tickets/${id}`)
+        .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => dispatch(editTicketAction(response.body)))
         .catch(console.error)

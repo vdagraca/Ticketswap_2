@@ -4,6 +4,7 @@ const Event = require('../events/model')
 const User = require('../users/model')
 const Comment = require('../comments/model')
 const auth = require('../auth/middleware')
+// const ticketFraude = require('./logic')
 
 const router = new Router()
 
@@ -11,6 +12,7 @@ router.post('/events/:id', auth, (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
+            console.log('userId', ticket.userId)
             if (!ticket) {
                 return res.status(404).send({
                     message: `ticket does not exist`
@@ -28,6 +30,7 @@ router.get('/events/:eventid/tickets/:id', (req, res, next) => {
             { include: [User, Comment] }
         )
         .then(ticket => {
+            // ticketFraude(ticket)
             if (!ticket) {
                 return res.status(404).send({
                     message: `Ticket does not exist`

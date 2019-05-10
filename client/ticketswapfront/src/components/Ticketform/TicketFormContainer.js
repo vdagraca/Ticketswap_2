@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import { createTicket } from '../../actions/tickets'
 
 export class TicketFormContainer extends Component {
+
     state = {
         picture: '',
+        name: '',
         price: '',
         description: '',
-        eventId: this.props.match.params.eventid
+        eventId: this.props.match.params.eventid,
+        userId: this.props.user.userId
     }
 
     onChange = (e) => {
@@ -19,19 +22,25 @@ export class TicketFormContainer extends Component {
 
     onSubmit = (event) => {
         event.preventDefault()
-
-        this.setState({
-            picture: '',
-            price: '',
-            description: ''
-        })
-        const eventid = this.props.match.params.eventid
-        console.log('eventid', eventid)
-        this.props.createTicket(eventid, this.state)
+        if (this.props.user) {
+            this.setState({
+                picture: '',
+                name: '',
+                price: '',
+                description: '',
+                userId: this.props.user.userId
+            })
+            const eventid = this.props.match.params.eventid
+            console.log('eventid', eventid)
+            this.props.createTicket(eventid, this.state)
+        } else { return null }
+    }
+    goBack = () => {
+        this.props.history.push('/events')
     }
 
     render() {
-
+        console.log('userid', this.props.user.userId)
         return (
 
             <div>
@@ -39,9 +48,15 @@ export class TicketFormContainer extends Component {
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     values={this.state} />
+                <button onClick={this.goBack}>Go back</button>
+
             </div>
         )
     }
 }
 
-export default connect(null, { createTicket })(TicketFormContainer)
+const mapStateToProps = (state) => ({
+    user: state.currentUser
+})
+
+export default connect(mapStateToProps, { createTicket })(TicketFormContainer)
