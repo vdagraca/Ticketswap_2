@@ -8,7 +8,7 @@ export default class TicketDetails extends Component {
         const { fraude } = this.props
         return (
             <div>
-                <h1>Ticket from user {ticket.userId}</h1>
+                <h1>Ticket from {ticket.name}</h1>
                 <h2>Risk:{fraude}%</h2>
                 <li>Description:{ticket.description}</li>
                 <br />

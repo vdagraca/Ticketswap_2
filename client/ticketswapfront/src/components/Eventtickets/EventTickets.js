@@ -8,8 +8,7 @@ export default class EventTickets extends Component {
         return <li
             key={ticket.id}>
             <Link to={`/events/${ticket.eventId}/tickets/${ticket.id}`} className="ListItem">
-                {ticket.description}
-                {ticket.price}</Link>
+                Name:{ticket.name} Description:{ticket.description} Price:€{ticket.price}</Link>
         </li>
     }
 
@@ -19,6 +18,7 @@ export default class EventTickets extends Component {
         console.log('tickets in EventTickets', tickets)
         return (
             <div className="ticket-list">
+                <h1>Eventtickets</h1>
                 {tickets === null && 'Loading...'}
                 {tickets !== null &&
                     <ul className={'List'}>

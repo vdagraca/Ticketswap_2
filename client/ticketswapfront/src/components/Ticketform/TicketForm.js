@@ -5,6 +5,9 @@ export default class TicketForm extends Component {
         return (
             <div>
                 <form className={'Form'}>
+                    <label>Name:
+                        <input type='text' name='name' value={this.props.values['name']} onChange={this.props.onChange} />
+                    </label>
                     <label>Picture:
                         <input type='text' name='picture' value={this.props.values['picture']} onChange={this.props.onChange} />
                     </label>

@@ -14,9 +14,6 @@ export class EventTicketsContainer extends Component {
         this.props.loadTickets(eventId)
     }
 
-    goBack = () => {
-        this.props.history.push('/events')
-    }
 
     render() {
         console.log('ticket in container', this.props.tickets)
