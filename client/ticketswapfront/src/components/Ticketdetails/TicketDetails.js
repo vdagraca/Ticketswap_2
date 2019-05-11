@@ -17,7 +17,7 @@ export default class TicketDetails extends Component {
                 <li>Price:{ticket.price}</li>
                 <button onClick={this.props.goBack}>Go back</button>
 
-                {ticket.user_Id === currentUser.userId &&
+                {ticket.userId === currentUser.userId &&
                     <button onClick={this.props.onEdit}>Edit</button>
                 }
 
