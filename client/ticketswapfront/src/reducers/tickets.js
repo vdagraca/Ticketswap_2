@@ -1,5 +1,5 @@
 
-import { TICKETS_FETCHED } from '../actions/events'
+import { TICKETS_FETCHED } from '../actions/tickets'
 import { CREATE_TICKET } from '../actions/tickets'
 
 export default (state = [], action) => {

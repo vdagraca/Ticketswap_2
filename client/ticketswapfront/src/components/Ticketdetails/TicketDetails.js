@@ -4,11 +4,11 @@ export default class TicketDetails extends Component {
 
 
     render() {
-        const { ticket } = this.props
-        const { fraude } = this.props
+        const { ticket, fraude, currentUser } = this.props
+
         return (
             <div>
-                <h1>Ticket from {ticket.name}</h1>
+                <h1>Ticket from {ticket.userName}</h1>
                 <h2>Risk:{fraude}%</h2>
                 <li>Description:{ticket.description}</li>
                 <br />
@@ -16,8 +16,15 @@ export default class TicketDetails extends Component {
                 <br /> <br />
                 <li>Price:{ticket.price}</li>
                 <button onClick={this.props.goBack}>Go back</button>
-                <button onClick={this.props.onEdit}>Edit</button>
+
+                {ticket.user_Id === currentUser.userId &&
+                    <button onClick={this.props.onEdit}>Edit</button>
+                }
+
+
             </div >
+
+
         )
     }
 }
