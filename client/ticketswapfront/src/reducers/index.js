@@ -9,7 +9,6 @@ import login from './login'
 import currentUser from './currentUser'
 import signup from './signup'
 import fraude from './fraude'
-import ticketUser from './ticketUser'
 
 
 export default combineReducers({
@@ -22,6 +21,5 @@ export default combineReducers({
     login,
     currentUser,
     signup,
-    fraude,
-    ticketUser
+    fraude
 })

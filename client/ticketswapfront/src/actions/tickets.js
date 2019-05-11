@@ -6,7 +6,6 @@ export const CREATE_TICKET = 'CREATE_TICKET'
 export const TICKET_DETAILS = 'TICKET_DETAILS'
 export const EDIT_TICKET = 'EDIT_TICKET'
 export const TICKET_FRAUDE = 'TICKET_FRAUDE'
-export const TICKET_USER = 'TICKET_USER '
 
 const fetchTickets = tickets => ({
     type: TICKETS_FETCHED,
@@ -83,19 +82,5 @@ export const updateTicket = (eventId, id, data) => (dispatch, getState) => {
         .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => dispatch(editTicketAction(response.body)))
-        .catch(console.error)
-}
-
-const fetchTicketUser = (ticketUser) => ({
-    type: TICKET_USER,
-    ticketUser
-})
-
-export const loadTicketUser = (eventId, id) => dispatch => {
-    request
-        .get(`${baseUrl}/events/${eventId}/tickets/${id}`)
-        .then(response => {
-            dispatch(fetchTicketUser(response.body.ticket.user))
-        })
         .catch(console.error)
 }
