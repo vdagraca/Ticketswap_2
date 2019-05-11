@@ -7,17 +7,18 @@ export class TicketFormContainer extends Component {
 
     state = {
         picture: '',
-        name: '',
         price: '',
         description: '',
-        eventId: this.props.match.params.eventid,
+        userName: null,
+        eventId: this.props.event.id,
         userId: null
     }
 
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
-            userId: this.props.user.userId
+            userId: this.props.user.userId,
+            userName: this.props.user.firstName,
         })
     }
 
@@ -26,21 +27,18 @@ export class TicketFormContainer extends Component {
         if (this.props.user) {
             this.setState({
                 picture: '',
-                name: '',
                 price: '',
                 description: '',
+                userName: this.props.user.firstName,
                 userId: this.props.user.userId
             })
-            const eventid = this.props.match.params.eventid
-            console.log('eventid', eventid)
+            const eventid = this.props.event.id
             this.props.createTicket(eventid, this.state)
         } else { return null }
     }
-    goBack = () => {
-        this.props.history.push('/events')
-    }
 
     render() {
+
         if (this.props.user) {
             return (
 
@@ -49,7 +47,7 @@ export class TicketFormContainer extends Component {
                         onSubmit={this.onSubmit}
                         onChange={this.onChange}
                         values={this.state} />
-                    <button onClick={this.goBack}>Go back</button>
+
 
                 </div>
             )
@@ -60,7 +58,9 @@ export class TicketFormContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.currentUser
+    user: state.currentUser,
+    event: state.event,
+
 })
 
 export default connect(mapStateToProps, { createTicket })(TicketFormContainer)

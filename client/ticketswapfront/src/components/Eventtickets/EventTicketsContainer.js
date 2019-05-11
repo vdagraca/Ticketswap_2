@@ -1,31 +1,38 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import EventTickets from './EventTickets'
-import { loadTickets } from '../../actions/events'
+import TicketFormContainer from '../Ticketform/TicketFormContainer'
+import { loadTickets } from '../../actions/tickets'
+import { loadEvent } from '../../actions/events'
 
 export class EventTicketsContainer extends Component {
-    
+
     state = {
-        editMode: false,
         formValues: {}
     }
 
     componentDidMount() {
         const eventId = this.props.match.params.eventid
         this.props.loadTickets(eventId)
+        this.props.loadEvent(eventId)
+    }
+    goBack = () => {
+        this.props.history.push(`/events`)
     }
 
-
     render() {
-        console.log('ticket in container', this.props.tickets)
-        console.log('events in eventticket', this.props.events)
+
+        const { event } = this.props
         return (
             <div>
-                {!this.state.editMode &&
-                    <EventTickets
-                        tickets={this.props.tickets}
-                        goBack={this.goBack}
-                    />}
+                <h1>{event.name}</h1>
+
+                <EventTickets
+                    tickets={this.props.tickets}
+                    goBack={this.goBack}
+                />
+                <TicketFormContainer />
+                <button onClick={this.goBack}>Go back</button>
             </div>
         )
     }
@@ -33,8 +40,9 @@ export class EventTicketsContainer extends Component {
 
 const mapStateToProps = (state) => ({
     tickets: state.tickets,
-    events: state.events
+    ticketUser: state.ticketUser,
+    event: state.event
 })
 
 
-export default connect(mapStateToProps, { loadTickets })(EventTicketsContainer)
+export default connect(mapStateToProps, { loadTickets, loadEvent })(EventTicketsContainer)

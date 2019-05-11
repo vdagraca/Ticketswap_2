@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import event from './event'
 import events from './events'
 import tickets from './tickets'
 import ticket from './ticket'
@@ -8,10 +9,12 @@ import login from './login'
 import currentUser from './currentUser'
 import signup from './signup'
 import fraude from './fraude'
+import ticketUser from './ticketUser'
 
 
 export default combineReducers({
     events,
+    event,
     tickets,
     ticket,
     comments,
@@ -19,5 +22,6 @@ export default combineReducers({
     login,
     currentUser,
     signup,
-    fraude
+    fraude,
+    ticketUser
 })

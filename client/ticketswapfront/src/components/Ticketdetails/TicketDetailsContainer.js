@@ -11,9 +11,9 @@ export class TicketDetailsContainer extends Component {
     }
 
     componentDidMount() {
-        console.log('match params', this.props.match.params)
         const id = this.props.match.params.id
-        const eventId = this.props.match.params.eventId
+        const eventId = this.props.event.id
+        console.log('eventId', eventId)
         this.props.loadDetails(eventId, id)
         this.props.loadFraude(eventId, id)
     }
@@ -60,6 +60,7 @@ export class TicketDetailsContainer extends Component {
     render() {
         console.log('ticket', this.props.ticket)
         console.log('fraude', this.props.fraude)
+        console.log('ticketuser', this.props.user)
         return (
 
             <div>
@@ -68,6 +69,7 @@ export class TicketDetailsContainer extends Component {
                     onEdit={this.editTicket}
                     goBack={this.goBack}
                     fraude={this.props.fraude}
+                    currentUser={this.props.currentUser}
                 />
 
                 {this.state.editMode &&
@@ -83,10 +85,11 @@ export class TicketDetailsContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    // ticket: state.ticket.ticket,
     ticket: state.ticket,
+    event: state.event,
     fraude: state.fraude,
-    comments: state.comments
+    comments: state.comments,
+    currentUser: state.currentUser
 })
 
 
