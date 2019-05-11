@@ -5,14 +5,17 @@ import { createComment } from '../../actions/comments'
 
 export class CommentFormContainer extends Component {
     state = {
-        author: '',
         comment: '',
-        ticketId: this.props.match.params.id
+        ticketId: this.props.ticket.id,
+        userName: null,
+        userId: null
     }
 
     onChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            userId: this.props.user.userId,
+            userName: this.props.user.firstName,
         })
     }
 
@@ -21,8 +24,9 @@ export class CommentFormContainer extends Component {
         // const ticketId = this.props.ticket.id
 
         this.setState({
-            author: '',
             comment: '',
+            userId: this.props.user.userId,
+            userName: this.props.user.firstName,
             // ticketId: this.props.ticket.id
         })
 
@@ -51,7 +55,7 @@ export class CommentFormContainer extends Component {
 
 const mapStateToProps = (state) => ({
     ticket: state.ticket,
-    user: state.currentUser !== null
+    user: state.currentUser
 })
 
 export default connect(mapStateToProps, { createComment })(CommentFormContainer)

@@ -5,7 +5,7 @@ export default class CommentList extends Component {
         return <li
             key={comment.id}
         ><br />
-            Author:{comment.author}
+            Author:{comment.userName}
             <br />
             Comment:{comment.comment}
             <br />
