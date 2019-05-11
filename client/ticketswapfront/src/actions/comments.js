@@ -13,8 +13,8 @@ export const loadComments = (eventId, id) => (dispatch) => {
     console.log('loadcomments action')
     request(`${baseUrl}/events/${eventId}/tickets/${id}`)
         .then(response => {
-            // console.log('response', response.body)
-            dispatch(commentsFetched(response.body.comments))
+            console.log('response', response.body)
+            dispatch(commentsFetched(response.body.ticket.comments))
         })
         .catch(console.error)
 }

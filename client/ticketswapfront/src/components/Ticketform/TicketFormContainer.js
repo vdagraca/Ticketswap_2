@@ -60,7 +60,7 @@ export class TicketFormContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.currentUser !== null
+    user: state.currentUser
 })
 
 export default connect(mapStateToProps, { createTicket })(TicketFormContainer)
