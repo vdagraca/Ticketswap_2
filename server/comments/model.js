@@ -3,9 +3,10 @@ const sequelize = require('../db')
 const User = require('../users/model')
 const Comment = sequelize.define('comments'
     , {
-        author: {
+        userName: {
             type: Sequelize.STRING,
-            field: 'author'
+            field: 'userName',
+            allowNull: false
         },
         comment: {
             type: Sequelize.STRING,
