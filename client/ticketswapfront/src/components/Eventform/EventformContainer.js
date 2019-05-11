@@ -10,11 +10,13 @@ export class EventFormContainer extends Component {
         picture: '',
         startdate: '',
         enddate: '',
+        userId: null
     }
 
     onChange = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            userId: this.props.user.userId
         })
     }
 
@@ -26,6 +28,7 @@ export class EventFormContainer extends Component {
             description: '',
             picture: '',
             startdate: '',
+            userName: this.props.user.firstName,
             enddate: ''
         })
         // if (this.props.authenticated) {
@@ -52,7 +55,7 @@ export class EventFormContainer extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    user: state.currentUser !== null
+    user: state.currentUser
 })
 
 export default connect(mapStateToProps, { createEvent })(EventFormContainer)
