@@ -8,9 +8,9 @@ const Ticket = sequelize.define('tickets'
             type: Sequelize.INTEGER,
             field: 'user_id'
         },
-        name: {
+        userName: {
             type: Sequelize.STRING,
-            field: 'name',
+            field: 'userName',
             allowNull: false
         },
         description: {
