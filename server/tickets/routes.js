@@ -1,10 +1,9 @@
 const { Router } = require('express')
 const Ticket = require('./model')
-const Event = require('../events/model')
 const User = require('../users/model')
 const Comment = require('../comments/model')
 const auth = require('../auth/middleware')
-const ticketFraude = require('./logic')
+const ticketFraude = require('../logic')
 
 const router = new Router()
 
@@ -30,14 +29,14 @@ router.get('/events/:eventid/tickets/:id', (req, res, next) => {
             { include: [User, Comment] }
         )
         .then(ticket => {
-            const fraude = ticketFraude(ticket)
-            console.log('fraude', fraude)
+            const fraude = ticketFraude(ticket, null)
 
             if (!ticket) {
                 return res.status(404).send({
                     message: `Ticket does not exist`
                 })
             }
+
             return res.send({
                 fraude,
                 ticket

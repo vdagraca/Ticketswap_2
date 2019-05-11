@@ -6,13 +6,6 @@ const router = new Router()
 
 router.post('/users', (req, res, next) => {
 
-    // if (req.body.password !== req.body.password_confirmation) {
-
-    //     return res.status(422).send({
-    //         message: 'Confirmed password incorrect'
-    //     })
-    // }
-
     User
         .create(
             {
