@@ -28,15 +28,15 @@ const Ticket = sequelize.define('tickets'
             field: 'price',
             allowNull: false
         }
-        // ,
-        // fraude: {
-        //     type: Sequelize.NUMBER,
-        //     field: 'fraude',
-        //     allowNull: false
-        // }
+        ,
+        fraude: {
+            type: Sequelize.INTEGER,
+            field: 'fraude',
+            allowNull: true
+        }
     },
     {
-        timestamps: false,
+        timestamps: true,
         tableName: 'tickets'
     }
 )
