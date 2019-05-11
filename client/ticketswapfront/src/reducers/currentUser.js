@@ -1,11 +1,14 @@
 import { USER_LOGIN_SUCCESS, USER_LOGOUT } from '../actions/users'
-import { localStorageJwtKey } from '../constants'
+import { localStorageJwtKey, localStorageUserId, localStoragefirstName, localStoragelastName } from '../constants'
 
 let initialState = null
 try {
   const jwt = localStorage.getItem(localStorageJwtKey)
+  const userId = localStorage.getItem(localStorageUserId)
+  const firstName = localStorage.getItem(localStoragefirstName)
+  const lastName = localStorage.getItem(localStoragelastName)
   if (jwt) {
-    initialState = { jwt }
+    initialState = { jwt, userId, firstName, lastName }
   }
 }
 catch (e) {
