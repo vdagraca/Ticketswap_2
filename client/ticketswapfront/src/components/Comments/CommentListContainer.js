@@ -16,7 +16,7 @@ export class CommentlistContainer extends Component {
         this.props.loadComments(eventId, id)
     }
     goBack = () => {
-        const eventId = this.props.match.params.eventId
+        const eventId = this.props.event.id
         this.props.history.push(`/events/${eventId}`)
     }
 
@@ -35,6 +35,7 @@ export class CommentlistContainer extends Component {
 
 const mapStateToProps = (state) => ({
     comments: state.comments,
+    event: state.event
 })
 
 export default connect(mapStateToProps, { loadComments })(CommentlistContainer)
