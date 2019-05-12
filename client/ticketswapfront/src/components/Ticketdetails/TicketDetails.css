@@ -1,14 +1,29 @@
 .green {
-    background-color: green;
-    display:inline
+    border: solid green 5px;
+    background-color: white;
+    display:inline;
+    padding: 5px;
 }
 
 .yellow {
-    background-color: yellow;
-    display:inline
+    border: solid  yellow 5px;
+    background-color: white;
+    display:inline;
+    padding: 5px;
+
 }
 
 .red {
-    background-color: red;
-    display:inline
+    border: solid  red 5px;
+    background-color: white;
+    display:inline;
+    padding: 5px;
+
+}
+
+.ticket{
+    background-color: #E8A87C;
+    display:inline-block;
+    padding: 100px;
+    border-radius: 20px;
 }

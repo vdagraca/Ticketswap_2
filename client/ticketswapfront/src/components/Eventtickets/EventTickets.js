@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './EventTickets.css'
 
 export default class EventTickets extends Component {
 
     renderTicketList(ticket) {
         console.log('ticket eventid', ticket.eventId)
-        return <li
+        return <li className= 'ListItem'
             key={ticket.id}>
-            <Link to={`/events/${ticket.eventId}/tickets/${ticket.id}`} className="ListItem">
-                Name:{ticket.userName} Description:{ticket.description} Price:€{ticket.price}</Link>
+            <Link to={`/events/${ticket.eventId}/tickets/${ticket.id}`} className="ListLinks">
+                Name:{ticket.userName} <br/>
+                Description:{ticket.description} <br/>
+                 Price:€{ticket.price}</Link>
         </li>
     }
 

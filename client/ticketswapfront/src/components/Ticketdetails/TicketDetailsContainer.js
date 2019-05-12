@@ -65,6 +65,7 @@ export class TicketDetailsContainer extends Component {
                     onEdit={this.editTicket}
                     fraude={this.props.fraude}
                     currentUser={this.props.currentUser}
+                    event={this.props.event}
                 />
 
                 {this.state.editMode &&
