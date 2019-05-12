@@ -18,9 +18,9 @@ export class TicketDetailsContainer extends Component {
         this.props.loadFraude(eventId, id)
     }
 
-    goBack = () => {
-        this.props.history.push(`/events`)
-    }
+    // goBack = () => {
+    //     this.props.history.push(`/events`)
+    // }
 
     editTicket = () => {
 
@@ -58,16 +58,14 @@ export class TicketDetailsContainer extends Component {
     }
 
     render() {
-        console.log('ticket', this.props.ticket)
-        console.log('fraude', this.props.fraude)
-        console.log('ticketuser', this.props.user)
+
         return (
 
             <div>
                 <TicketDetails
                     ticket={this.props.ticket}
                     onEdit={this.editTicket}
-                    goBack={this.goBack}
+                    // goBack={this.goBack}
                     fraude={this.props.fraude}
                     currentUser={this.props.currentUser}
                 />
