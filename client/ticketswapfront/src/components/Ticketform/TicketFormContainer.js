@@ -10,7 +10,7 @@ export class TicketFormContainer extends Component {
         price: '',
         description: '',
         userName: null,
-        eventId: this.props.event.id,
+        eventId: null,
         userId: null
     }
 
@@ -19,6 +19,7 @@ export class TicketFormContainer extends Component {
             [e.target.name]: e.target.value,
             userId: this.props.user.userId,
             userName: this.props.user.firstName,
+            eventId: this.props.event.id,
         })
     }
 
@@ -30,15 +31,16 @@ export class TicketFormContainer extends Component {
                 price: '',
                 description: '',
                 userName: this.props.user.firstName,
+                eventId: this.props.event.id,
                 userId: this.props.user.userId
             })
-            const eventid = this.props.event.id
-            this.props.createTicket(eventid, this.state)
+            const eventId = this.props.event.id
+            this.props.createTicket(eventId, this.state)
         } else { return null }
     }
 
     render() {
-
+        console.log('event in form', this.props.event)
         if (this.props.user) {
             return (
 
