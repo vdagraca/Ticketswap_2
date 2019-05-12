@@ -53,12 +53,8 @@ router.get('/events/:id', (req, res, next) => {
                     message: `Event does not exist`
                 })
             }
-            // event.getTickets().then(tickets => {
-            //     const fraude2 = ticketFraude(null, tickets)
 
-            //     ticketFraude(null, tickets)
             return res.send(event)
-            // })
 
         })
         .catch(error => next(error))

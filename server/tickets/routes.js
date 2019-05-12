@@ -11,7 +11,6 @@ router.post('/events/:id', auth, (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
-            console.log('userId', ticket.userId)
             if (!ticket) {
                 return res.status(404).send({
                     message: `ticket does not exist`
