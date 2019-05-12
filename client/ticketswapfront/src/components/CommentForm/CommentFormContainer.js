@@ -6,7 +6,7 @@ import { createComment } from '../../actions/comments'
 export class CommentFormContainer extends Component {
     state = {
         comment: '',
-        ticketId: this.props.ticket.id,
+        ticketId: null,
         userName: null,
         userId: null
     }
@@ -14,6 +14,7 @@ export class CommentFormContainer extends Component {
     onChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
+            ticketId: this.props.ticket.id,
             userId: this.props.user.userId,
             userName: this.props.user.firstName,
         })
@@ -27,7 +28,7 @@ export class CommentFormContainer extends Component {
             comment: '',
             userId: this.props.user.userId,
             userName: this.props.user.firstName,
-            // ticketId: this.props.ticket.id
+            ticketId: this.props.ticket.id
         })
 
         const eventid = this.props.eventid

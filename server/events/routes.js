@@ -2,6 +2,7 @@ const { Router } = require('express')
 const Event = require('./model')
 const Ticket = require('../tickets/model')
 const User = require('../users/model')
+const ticketFraude = require('../logic')
 
 const auth = require('../auth/middleware')
 
@@ -52,7 +53,9 @@ router.get('/events/:id', (req, res, next) => {
                     message: `Event does not exist`
                 })
             }
+
             return res.send(event)
+
         })
         .catch(error => next(error))
 })

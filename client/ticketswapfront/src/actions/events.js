@@ -29,7 +29,7 @@ export const loadEvent = (id) => (dispatch) => {
 
     request(`${baseUrl}/events/${id}`)
         .then(response => {
-
+            console.log('event with fraude2', response.body)
             dispatch(fetchEvent(response.body))
         })
         .catch(console.error)

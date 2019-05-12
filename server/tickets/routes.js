@@ -1,10 +1,9 @@
 const { Router } = require('express')
 const Ticket = require('./model')
-const Event = require('../events/model')
 const User = require('../users/model')
 const Comment = require('../comments/model')
 const auth = require('../auth/middleware')
-const ticketFraude = require('./logic')
+const ticketFraude = require('../logic')
 
 const router = new Router()
 
@@ -12,7 +11,6 @@ router.post('/events/:id', auth, (req, res, next) => {
     Ticket
         .create(req.body)
         .then(ticket => {
-            console.log('userId', ticket.userId)
             if (!ticket) {
                 return res.status(404).send({
                     message: `ticket does not exist`
@@ -30,20 +28,23 @@ router.get('/events/:eventid/tickets/:id', (req, res, next) => {
             { include: [User, Comment] }
         )
         .then(ticket => {
-            const fraude = ticketFraude(ticket)
-            console.log('fraude', fraude)
 
             if (!ticket) {
                 return res.status(404).send({
                     message: `Ticket does not exist`
                 })
             }
-            return res.send({
-                fraude,
-                ticket
+
+            Ticket.findAll().then(tickets => {
+                const fraude = ticketFraude(ticket, tickets)
+
+                return res.send({
+                    fraude,
+                    ticket
+                })
             })
+                .catch(error => next(error))
         })
-        .catch(error => next(error))
 })
 
 router.put('/events/:eventid/tickets/:id', auth, (req, res, next) => {

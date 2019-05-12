@@ -33,6 +33,7 @@ export const createTicket = (id, data) => (dispatch, getState) => {
         .set('Authorization', `Bearer ${state.currentUser.jwt}`)
         .send(data)
         .then(response => {
+            console.log('id in action', id)
             dispatch(ticketCreatedSuccess(response.body))
         })
         .catch(console.error)
