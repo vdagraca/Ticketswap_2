@@ -2,7 +2,7 @@ const { Router } = require('express')
 const Event = require('./model')
 const Ticket = require('../tickets/model')
 const User = require('../users/model')
-const ticketFraude2 = require('../logic')
+const ticketFraude = require('../logic')
 
 const auth = require('../auth/middleware')
 
@@ -48,14 +48,18 @@ router.get('/events/:id', (req, res, next) => {
         .findByPk(req.params.id, { include: [Ticket, User] }
         )
         .then(event => {
-            // ticketFraude2(req)
-            // console.log('fraude2', fraude2)
             if (!event) {
                 return res.status(404).send({
                     message: `Event does not exist`
                 })
             }
+            // event.getTickets().then(tickets => {
+            //     const fraude2 = ticketFraude(null, tickets)
+
+            //     ticketFraude(null, tickets)
             return res.send(event)
+            // })
+
         })
         .catch(error => next(error))
 })

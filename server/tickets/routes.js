@@ -29,7 +29,6 @@ router.get('/events/:eventid/tickets/:id', (req, res, next) => {
             { include: [User, Comment] }
         )
         .then(ticket => {
-            const fraude = ticketFraude(ticket, null)
 
             if (!ticket) {
                 return res.status(404).send({
@@ -37,12 +36,16 @@ router.get('/events/:eventid/tickets/:id', (req, res, next) => {
                 })
             }
 
-            return res.send({
-                fraude,
-                ticket
+            Ticket.findAll().then(tickets => {
+                const fraude = ticketFraude(ticket, tickets)
+
+                return res.send({
+                    fraude,
+                    ticket
+                })
             })
+                .catch(error => next(error))
         })
-        .catch(error => next(error))
 })
 
 router.put('/events/:eventid/tickets/:id', auth, (req, res, next) => {
