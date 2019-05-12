@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import CommentList from './CommentList';
 import { connect } from 'react-redux'
 import { loadComments } from '../../actions/comments'
-import { CommentFormContainer } from '../CommentForm/CommentFormContainer'
 
 
 export class CommentlistContainer extends Component {
@@ -16,6 +15,10 @@ export class CommentlistContainer extends Component {
         console.log('eventid', eventId, 'id', id)
         this.props.loadComments(eventId, id)
     }
+    goBack = () => {
+        const eventId = this.props.match.params.eventId
+        this.props.history.push(`/events/${eventId}`)
+    }
 
     render() {
 
@@ -24,6 +27,7 @@ export class CommentlistContainer extends Component {
                 <CommentList
                     comments={this.props.comments}
                 />
+                <button onClick={this.goBack}>Go back</button>
             </div>
         )
     }
