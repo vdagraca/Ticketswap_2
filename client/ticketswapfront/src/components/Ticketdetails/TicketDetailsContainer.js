@@ -13,14 +13,10 @@ export class TicketDetailsContainer extends Component {
     componentDidMount() {
         const id = this.props.match.params.id
         const eventId = this.props.event.id
-        console.log('eventId', eventId)
         this.props.loadDetails(eventId, id)
         this.props.loadFraude(eventId, id)
-    }
 
-    // goBack = () => {
-    //     this.props.history.push(`/events`)
-    // }
+    }
 
     editTicket = () => {
 
@@ -35,6 +31,7 @@ export class TicketDetailsContainer extends Component {
             }
         }
         )
+
     }
 
     onSubmit = (tickt) => {
@@ -46,6 +43,7 @@ export class TicketDetailsContainer extends Component {
             editMode: false
         })
         updateTicket(ticket.eventId, ticket.id, this.state.formValues)
+
     }
 
     onChange = (ticket) => {
@@ -65,7 +63,6 @@ export class TicketDetailsContainer extends Component {
                 <TicketDetails
                     ticket={this.props.ticket}
                     onEdit={this.editTicket}
-                    // goBack={this.goBack}
                     fraude={this.props.fraude}
                     currentUser={this.props.currentUser}
                 />
