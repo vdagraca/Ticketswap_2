@@ -1,0 +1,27 @@
+.navbar{
+    background-color: #2F4F4F;
+    color: white;
+    font-size: 50px;
+    font-family: 'Bitter', serif;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.logcontainer {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    margin: 20px
+}
+.signupcontainer{
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    margin: 20px;
+}
+
+.title{
+    color: white;
+}
+
