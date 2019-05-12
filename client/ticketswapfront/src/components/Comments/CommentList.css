@@ -1,0 +1,9 @@
+.ListItems {
+    list-style: none;
+    display: inline-block;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #C38D9E;
+
+}

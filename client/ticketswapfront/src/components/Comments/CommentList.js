@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import './CommentList.css'
 
 export default class CommentList extends Component {
     renderCommentList(comment) {
-        return <li
+        return <li className='ListItems'
             key={comment.id}
         ><br />
             Author:{comment.userName}

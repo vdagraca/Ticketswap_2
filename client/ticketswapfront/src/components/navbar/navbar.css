@@ -1,5 +1,5 @@
 .navbar{
-    background-color: #2F4F4F;
+    background-color: #41B3A3;
     color: white;
     font-size: 50px;
     font-family: 'Bitter', serif;
@@ -12,13 +12,15 @@
     font-size: 20px;
     color: white;
     text-decoration: none;
-    margin: 20px
+    margin: 20px;
+
 }
 .signupcontainer{
     font-size: 20px;
     color: white;
     text-decoration: none;
     margin: 20px;
+
 }
 
 .title{
