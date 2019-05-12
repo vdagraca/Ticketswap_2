@@ -4,8 +4,6 @@ import './TicketDetails.css';
 
 export default class TicketDetails extends Component {
 
-
-
     render() {
         const { ticket, fraude, currentUser } = this.props
         let className = () => {
@@ -28,7 +26,6 @@ export default class TicketDetails extends Component {
                 <img className="image" style={{ width: "300px" }} src={ticket.picture} alt={ticket.name} />
                 <br /> <br />
                 <li>Price:{ticket.price}</li>
-                {/* <button onClick={this.props.goBack}>Go back</button> */}
 
                 {currentUser &&
                     ticket.userId === currentUser.userId &&

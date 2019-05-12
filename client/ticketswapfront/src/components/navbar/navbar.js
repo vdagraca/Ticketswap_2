@@ -10,20 +10,20 @@ class navbar extends Component {
             <div>
                 <div className='navbar'>
                     <div className='logcontainer'>
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/login`} className="Loginbutton">Login</Link>
-                        <Link style={{ textDecoration: 'none', color: 'white' }} to={`/logout`} className="Logoutbutton">Logout</Link>
+                        <Link style={{ textDecoration: 'none', color: 'white', margin: '3px' }} to={`/login`} className="Loginbutton">Login</Link>
+                        <Link style={{ textDecoration: 'none', color: 'white', margin: '3px' }} to={`/logout`} className="Logoutbutton">Logout</Link>
                     </div>
-                    <div classname='title'>Ticketswap
+                    <div className='title'>Ticketswap
                 </div>
                     <div className='signupcontainer'>
-                        <Link className='signupcontainer' style={{ textDecoration: 'none', color: 'white' }} to={`/signup`} className="Signupbutton">Sign up</Link>
+                        <Link className='signupbutton' style={{ textDecoration: 'none', color: 'white' }} to={`/signup`} className="Signupbutton">Sign up</Link>
                     </div>
 
                 </div>
                 {
                     this.props.user &&
                     <div className='username'>
-                        {this.props.user.firstName}{this.props.user.lastName}
+                        {this.props.user.firstName} {this.props.user.lastName}
                     </div>
                 }
             </div >

@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './Eventlist.css'
 
 
 export default class Eventlist extends Component {
+
+
+
     renderEventList(event) {
-        return <li
-            key={event.name} style={{ display: "inline-block", margin: "20px" }}
+
+        return <li className='Event-List'
+            key={event.id}
         >
-            <Link to={`/events/${event.id}`} className="ListItem">
-                <img className="image" style={{ width: "300px" }} src={event.picture} alt={event.name} />
+            <Link to={`/events/${event.id}`} className="listItem" >
+                <img className="image" src={event.picture} alt={event.name} />
                 <br />
                 {event.name}
+                <br />
                 Date:{event.startdate}
                 <br /><br />
             </Link>
@@ -21,7 +27,7 @@ export default class Eventlist extends Component {
         const { events } = this.props
         console.log('events', events)
         return (
-            <div className="event-list">
+            <div className="Events">
                 <h1>Events</h1>
                 {events === null && 'Loading...'}
                 {events !== null &&

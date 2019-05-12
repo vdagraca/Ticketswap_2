@@ -1,3 +1,21 @@
-.ListItem {
+.List {
+    background-color: antiquewhite
+}
+
+.Event-List {
+    margin: 20px;
+    font-family: 'Bitter', serif;
     display: inline-block;
+}
+
+.listItem {
+    color: black;
+    text-decoration: none;
+
+
+}
+
+.image{
+    max-width: 300px;
+    border-radius: 10px;
 }
