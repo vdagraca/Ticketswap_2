@@ -9,13 +9,14 @@ class LogoutPage extends PureComponent {
 	}
 
 	render() {
-		if (!this.props.currentUser) return (
-			<Redirect to="/events" />
-		)
+		// if (!this.props.authenticated) return (
+		// 	<Redirect to="/events" />
+		// )
 
 		return (
 			<div>
 				<h1>Logging out...</h1>
+				<Redirect to="/events" />
 			</div>
 		)
 	}
