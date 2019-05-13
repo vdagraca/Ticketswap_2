@@ -43,8 +43,11 @@ export class TicketDetailsContainer extends Component {
             editMode: false
         })
         updateTicket(ticket.eventId, ticket.id, this.state.formValues)
-
+        // const id = this.props.match.params.id
+        // const eventId = this.props.event.id
+        // setTimeout(this.props.loadFraude(id, eventId), 500)
     }
+
 
     onChange = (ticket) => {
         this.setState({
