@@ -27,8 +27,8 @@ function ticketFraude(ticket, tickets) {
     }, 0);
 
     const average = sum / ticketPriceArrayThisEvent.length
-    const percentageCheaper = ticket.price / average
-    const percentageExpensive = ticket.price / average - 1
+    const percentageCheaper = (ticket.price / average) * 100
+    const percentageExpensive = (ticket.price / average - 1) * 100
     console.log('start, frauderisk:', fraudeRisk)
     if (ticket.price < average) {
         fraudeRisk += percentageCheaper
@@ -65,7 +65,7 @@ function ticketFraude(ticket, tickets) {
 
     console.log('min 5%, max 95%, frauderisk:', fraudeRisk)
 
-    let fraude = Math.round(fraudeRisk * 100) / 100
+    let fraude = Math.round(fraudeRisk * 1) / 1
 
     return fraude
 }
