@@ -10,12 +10,10 @@
 .ListItem {
     list-style: none;
     display: inline-block;
-    border: solid black;
+    border: solid 5px #E8A87C;
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
-    background-color: antiquewhite;
-
 }
 
 .ListLinks {
