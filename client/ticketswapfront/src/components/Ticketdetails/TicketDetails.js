@@ -7,11 +7,11 @@ export default class TicketDetails extends Component {
     render() {
         const { ticket, fraude, currentUser, event } = this.props
         let className = () => {
-            if (fraude === 5) {
+            if (fraude < 20) {
                 return 'green'
-            } else if (fraude >= 5 && fraude <= 10) {
+            } else if (fraude >= 20 && fraude <= 50) {
                 return 'yellow'
-            } else if (fraude > 10) {
+            } else if (fraude > 50) {
                 return 'red'
             }
         }
