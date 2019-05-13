@@ -17,6 +17,8 @@ export default class Eventlist extends Component {
                 <br />
                 {event.name}
                 <br />
+                Description: {event.description}
+                <br />
                 Date:{event.startdate}
                 <br /><br />
             </Link>
