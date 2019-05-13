@@ -27,13 +27,15 @@ function ticketFraude(ticket, tickets) {
     }, 0);
 
     const average = sum / ticketPriceArrayThisEvent.length
-    const percentageCheaper = (ticket.price / average) * 100
-    const percentageExpensive = (ticket.price / average - 1) * 100
+    const percentageCheaper = 100 - (ticket.price * 100) / average
+    const percentageExpensive = ((ticket.price * 100) / average) - 100
+    console.log('percentageCheaper', percentageCheaper)
+    console.log('percentageExpensive', percentageExpensive)
     console.log('start, frauderisk:', fraudeRisk)
     if (ticket.price < average) {
         fraudeRisk += percentageCheaper
     } else if (ticket.price > average) {
-        if (percentageExpensive > 0.1) {
+        if (percentageExpensive > 10) {
             fraudeRisk -= 10
         } else {
             fraudeRisk -= percentageExpensive
@@ -41,7 +43,7 @@ function ticketFraude(ticket, tickets) {
     }
     console.log('compared avarage price, <average + verschil, >averega - verschil, frauderisk:', fraudeRisk)
 
-    if (comments.length > 2) {
+    if (comments.length > 3) {
         fraudeRisk += 5
     }
     console.log('comments>3 +5, frauderisk:', fraudeRisk)
