@@ -28,7 +28,6 @@ export class EventTicketsContainer extends Component {
                 <h1>{event.name}</h1>
                 <EventTickets
                     tickets={this.props.tickets}
-                    goBack={this.goBack}
                 />
                 <TicketFormContainer />
                 <button onClick={this.goBack}>Go back</button>

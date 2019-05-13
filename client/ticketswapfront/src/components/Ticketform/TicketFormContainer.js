@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TicketForm from './TicketForm'
 import { connect } from 'react-redux';
 import { createTicket } from '../../actions/tickets'
+import './TicketForm.css'
 
 export class TicketFormContainer extends Component {
 
@@ -43,7 +44,7 @@ export class TicketFormContainer extends Component {
         if (this.props.user) {
             return (
 
-                <div>
+                <div className='ticket-form'>
                     <TicketForm
                         onSubmit={this.onSubmit}
                         onChange={this.onChange}

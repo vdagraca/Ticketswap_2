@@ -45,7 +45,8 @@ export class TicketDetailsContainer extends Component {
         updateTicket(ticket.eventId, ticket.id, this.state.formValues)
         // const id = this.props.match.params.id
         // const eventId = this.props.event.id
-        // setTimeout(this.props.loadFraude(id, eventId), 500)
+        // setTimeout(this.props.loadDetails(id, eventId), 500)
+        // setTimeout(this.props.loadFraude(id, eventId), 1000)
     }
 
 

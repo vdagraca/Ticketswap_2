@@ -33,6 +33,7 @@ export default class TicketDetails extends Component {
                             style={{ width: "300px" }}
                             src={ticket.picture} alt={ticket.name} />
                     </div>
+                    <br/>
                 </div>
 
 
@@ -40,7 +41,7 @@ export default class TicketDetails extends Component {
 
                 {currentUser &&
                     ticket.userId === currentUser.userId &&
-                    <button onClick={this.props.onEdit}>Edit</button>
+                    <button onClick={this.props.onEdit}>Edit ticket</button>
                 }
             </div >
 
