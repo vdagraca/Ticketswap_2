@@ -1,5 +1,7 @@
-.Form {
+.ticket-form {
         position: relative;
-        top: 250px;
-    
+}
+
+label {
+    margin-right: 15px;
 }

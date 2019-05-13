@@ -6,7 +6,7 @@ export default class CommentForm extends Component {
         return (
             <div className='comment-form'>
                 <form className={'Form'}>
-                    <label>  Comment:
+                    <label>  Comment
                         <input type='text' name='comment' value={this.props.values['comment']} onChange={this.props.onChange} />
                     </label>
                     <button onClick={this.props.onSubmit} type='submit' value="Submit">Create Comment</button>

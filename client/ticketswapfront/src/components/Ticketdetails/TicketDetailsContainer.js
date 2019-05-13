@@ -43,10 +43,11 @@ export class TicketDetailsContainer extends Component {
             editMode: false
         })
         updateTicket(ticket.eventId, ticket.id, this.state.formValues)
-        // const id = this.props.match.params.id
-        // const eventId = this.props.event.id
+        const id = this.props.match.params.id
+        const eventId = this.props.event.id
         // setTimeout(this.props.loadDetails(id, eventId), 500)
         // setTimeout(this.props.loadFraude(id, eventId), 1000)
+        this.props.loadFraude(eventId, id)
     }
 
 
@@ -79,6 +80,7 @@ export class TicketDetailsContainer extends Component {
                         values={this.state.formValues}
                     />
                 }
+
             </div>
         )
     }
