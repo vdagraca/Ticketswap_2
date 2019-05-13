@@ -22,8 +22,6 @@ export class CommentFormContainer extends Component {
 
     onSubmit = (comment) => {
         comment.preventDefault()
-        // const ticketId = this.props.ticket.id
-
         this.setState({
             comment: '',
             userId: this.props.user.userId,
@@ -33,7 +31,6 @@ export class CommentFormContainer extends Component {
 
         const eventid = this.props.eventid
         const id = this.props.id
-        // console.log('ticketId', ticketId)
         this.props.createComment(eventid, id, this.state)
     }
 

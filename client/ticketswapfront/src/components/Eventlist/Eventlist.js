@@ -25,7 +25,6 @@ export default class Eventlist extends Component {
 
     render() {
         const { events } = this.props
-        console.log('events', events)
         return (
             <div className="Events">
                 <h1>Events</h1>

@@ -26,7 +26,6 @@ export class EventTicketsContainer extends Component {
         return (
             <div>
                 <h1>{event.name}</h1>
-
                 <EventTickets
                     tickets={this.props.tickets}
                     goBack={this.goBack}

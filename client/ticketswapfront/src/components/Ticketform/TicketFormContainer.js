@@ -40,7 +40,6 @@ export class TicketFormContainer extends Component {
     }
 
     render() {
-        console.log('event in form', this.props.event)
         if (this.props.user) {
             return (
 

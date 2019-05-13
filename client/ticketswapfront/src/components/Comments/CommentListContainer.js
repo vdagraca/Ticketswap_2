@@ -8,11 +8,8 @@ export class CommentlistContainer extends Component {
     state = { comments: null }
 
     componentDidMount() {
-        console.log('match params', this.props.match.params)
-        // const id = this.props.match.params.id
         const eventId = this.props.match.params.eventId
         const id = this.props.match.params.id
-        console.log('eventid', eventId, 'id', id)
         this.props.loadComments(eventId, id)
     }
     goBack = () => {

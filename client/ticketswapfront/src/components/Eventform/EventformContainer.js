@@ -31,9 +31,7 @@ export class EventFormContainer extends Component {
             userName: this.props.user.firstName,
             enddate: ''
         })
-        // if (this.props.authenticated) {
         this.props.createEvent(this.state)
-        // }
     }
 
 

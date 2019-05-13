@@ -15,7 +15,6 @@ export default class CommentList extends Component {
 
     render() {
         const { comments } = this.props
-        console.log('comments', comments)
         return (
             <div className="comment-list">
                 <h1>Comments:</h1>
