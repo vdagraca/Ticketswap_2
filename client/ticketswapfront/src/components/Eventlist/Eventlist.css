@@ -1,8 +1,9 @@
-
+.Events {
+    font-family: 'Bitter', serif;
+}
 
 .Event-List {
     margin: 20px;
-    font-family: 'Bitter', serif;
     display: inline-block;
 }
 

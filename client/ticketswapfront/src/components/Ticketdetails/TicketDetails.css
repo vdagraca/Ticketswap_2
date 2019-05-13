@@ -27,3 +27,9 @@
     padding: 100px;
     border-radius: 20px;
 }
+
+.ticket-details {
+    font-family: 'Bitter', serif;
+    position: absolute;
+    left: 100px;
+}

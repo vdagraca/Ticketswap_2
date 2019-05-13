@@ -1,3 +1,9 @@
+.comment-list {
+    font-family: 'Bitter', serif;
+    position: relative;
+    left: 100px;
+}
+
 .ListItems {
     list-style: none;
     display: inline-block;

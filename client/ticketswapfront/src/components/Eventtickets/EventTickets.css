@@ -1,7 +1,10 @@
 
+.ticket-list {
+    font-family: 'Bitter', serif;
+}
+
 .List {
     margin: 20px;
-    font-family: 'Bitter', serif;
 }
 
 .ListItem {

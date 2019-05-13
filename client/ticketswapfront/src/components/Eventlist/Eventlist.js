@@ -19,7 +19,7 @@ export default class Eventlist extends Component {
                 <br />
                 Description: {event.description}
                 <br />
-                Date:{event.startdate}
+                Date:{event.startdate} till {event.enddate}
                 <br /><br />
             </Link>
         </li>

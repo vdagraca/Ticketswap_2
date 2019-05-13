@@ -18,7 +18,7 @@ export default class TicketDetails extends Component {
 
         return (
 
-            <div>
+            <div className='ticket-details'>
                 <h1>{event.name}</h1>
                 <div className='ticket'>
                     <div className='ticketInfo'>
