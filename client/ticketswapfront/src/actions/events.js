@@ -14,7 +14,6 @@ export const loadEvents = () => (dispatch) => {
 
     request(`${baseUrl}/events`)
         .then(response => {
-            // console.log('response', response.body)
             dispatch(eventsFetched(response.body.events))
         })
         .catch(console.error)

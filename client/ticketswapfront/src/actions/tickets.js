@@ -50,7 +50,7 @@ export const loadDetails = (eventId, id) => dispatch => {
     request
         .get(`${baseUrl}/events/${eventId}/tickets/${id}`)
         .then(response => {
-            console.log('ticktdetails action', response.body.ticket)
+            console.log('fraude in ticket action', response.body.fraude)
             dispatch(ticketDetailsFetched(response.body.ticket))
         })
         .catch(console.error)
@@ -66,6 +66,7 @@ export const loadFraude = (eventId, id) => dispatch => {
     request
         .get(`${baseUrl}/events/${eventId}/tickets/${id}`)
         .then(response => {
+            console.log('fraude action2', response.body.fraude)
             dispatch(fraudeFetched(response.body.fraude))
         })
         .catch(console.error)

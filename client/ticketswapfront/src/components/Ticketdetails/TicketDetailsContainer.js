@@ -48,6 +48,7 @@ export class TicketDetailsContainer extends Component {
         // setTimeout(this.props.loadDetails(id, eventId), 500)
         // setTimeout(this.props.loadFraude(id, eventId), 1000)
         this.props.loadFraude(eventId, id)
+
     }
 
 
