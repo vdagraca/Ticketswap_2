@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router-dom'
 import Navbar from './components/navbar/navbar'
 import EventlistContainer from './components/Eventlist/EventlistContainer'
 import EventTicketsContainer from './components/Eventtickets/EventTicketsContainer'
-import EventFormContainer from './components/Eventform/EventFormContainer'
+import EventFormContainer from './components/Eventform/EventformContainer'
 import TicketDetailsContainer from './components/Ticketdetails/TicketDetailsContainer'
 import CommentListContainer from './components/Comments/CommentListContainer';
 import CommentFormContainer from './components/CommentForm/CommentFormContainer';
